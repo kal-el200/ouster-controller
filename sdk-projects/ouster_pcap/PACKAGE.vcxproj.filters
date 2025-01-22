@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\1de5181548c4fbe1dd587df12819ea15\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{040A90E4-7C9A-3E25-A09F-5BB50280115F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

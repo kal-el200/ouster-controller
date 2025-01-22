@@ -1,0 +1,152 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster-controller", "ouster-controller\ouster-controller.vcxproj", "{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4} = {10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771} = {3BE95268-A161-3EA8-9C93-5339D6CC2771}
+		{3C615257-A1C6-39F6-A295-370A60404E12} = {3C615257-A1C6-39F6-A295-370A60404E12}
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32} = {FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster-controller-test", "ouster-controller-test\ouster-controller-test.vcxproj", "{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4} = {10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771} = {3BE95268-A161-3EA8-9C93-5339D6CC2771}
+		{3C615257-A1C6-39F6-A295-370A60404E12} = {3C615257-A1C6-39F6-A295-370A60404E12}
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA} = {65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32} = {FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sdk-projects", "sdk-projects", "{64C83B54-F691-4467-8ADE-D273D6DE0EEC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster_client", "sdk-projects\ouster_client\ouster_client.vcxproj", "{3BE95268-A161-3EA8-9C93-5339D6CC2771}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster_pcap", "sdk-projects\ouster_pcap\ouster_pcap.vcxproj", "{3C615257-A1C6-39F6-A295-370A60404E12}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster_viz", "sdk-projects\ouster_viz\ouster_viz.vcxproj", "{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster_osf", "sdk-projects\ouster_osf\ouster_osf.vcxproj", "{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster-lidar-simulator", "ouster-lidar-simulator\lidar_simulator.vcxproj", "{78AEDEBB-60AF-3F74-A3C4-2709C2845995}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4} = {10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}
+		{3C615257-A1C6-39F6-A295-370A60404E12} = {3C615257-A1C6-39F6-A295-370A60404E12}
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32} = {FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster-common", "ouster-common\ouster-common.vcxitems", "{F724CE68-C8D3-4B09-A495-1A35C8706A0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		RelWithDebInfo|x64 = RelWithDebInfo|x64
+		RelWithDebInfo|x86 = RelWithDebInfo|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.Debug|x64.ActiveCfg = Debug|x64
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.Debug|x64.Build.0 = Debug|x64
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.Debug|x86.ActiveCfg = Debug|Win32
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.Debug|x86.Build.0 = Debug|Win32
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.Release|x64.ActiveCfg = Release|x64
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.Release|x64.Build.0 = Release|x64
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.Release|x86.ActiveCfg = Release|Win32
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.Release|x86.Build.0 = Release|Win32
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|Win32
+		{65CF1AAC-6A3B-4C77-AE63-6F5CB78F07CA}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|Win32
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.Debug|x64.ActiveCfg = Debug|x64
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.Debug|x64.Build.0 = Debug|x64
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.Debug|x86.ActiveCfg = Debug|Win32
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.Debug|x86.Build.0 = Debug|Win32
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.Release|x64.ActiveCfg = Release|x64
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.Release|x64.Build.0 = Release|x64
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.Release|x86.ActiveCfg = Release|Win32
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.Release|x86.Build.0 = Release|Win32
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|Win32
+		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|Win32
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.Debug|x64.ActiveCfg = Debug|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.Debug|x64.Build.0 = Debug|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.Debug|x86.ActiveCfg = Debug|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.Debug|x86.Build.0 = Debug|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.Release|x64.ActiveCfg = Release|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.Release|x64.Build.0 = Release|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.Release|x86.ActiveCfg = Release|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.Release|x86.Build.0 = Release|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.Debug|x64.ActiveCfg = Debug|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.Debug|x64.Build.0 = Debug|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.Debug|x86.ActiveCfg = Debug|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.Debug|x86.Build.0 = Debug|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.Release|x64.ActiveCfg = Release|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.Release|x64.Build.0 = Release|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.Release|x86.ActiveCfg = Release|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.Release|x86.Build.0 = Release|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
+		{3C615257-A1C6-39F6-A295-370A60404E12}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.Debug|x64.ActiveCfg = Debug|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.Debug|x64.Build.0 = Debug|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.Debug|x86.ActiveCfg = Debug|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.Debug|x86.Build.0 = Debug|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.Release|x64.ActiveCfg = Release|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.Release|x64.Build.0 = Release|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.Release|x86.ActiveCfg = Release|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.Release|x86.Build.0 = Release|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.Debug|x64.ActiveCfg = Debug|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.Debug|x64.Build.0 = Debug|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.Debug|x86.ActiveCfg = Debug|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.Debug|x86.Build.0 = Debug|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.Release|x64.ActiveCfg = Release|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.Release|x64.Build.0 = Release|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.Release|x86.ActiveCfg = Release|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.Release|x86.Build.0 = Release|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.Debug|x64.ActiveCfg = Debug|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.Debug|x64.Build.0 = Debug|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.Debug|x86.ActiveCfg = Debug|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.Debug|x86.Build.0 = Debug|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.Release|x64.ActiveCfg = Release|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.Release|x64.Build.0 = Release|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.Release|x86.ActiveCfg = Release|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.Release|x86.Build.0 = Release|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
+		{78AEDEBB-60AF-3F74-A3C4-2709C2845995}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3BE95268-A161-3EA8-9C93-5339D6CC2771} = {64C83B54-F691-4467-8ADE-D273D6DE0EEC}
+		{3C615257-A1C6-39F6-A295-370A60404E12} = {64C83B54-F691-4467-8ADE-D273D6DE0EEC}
+		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4} = {64C83B54-F691-4467-8ADE-D273D6DE0EEC}
+		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32} = {64C83B54-F691-4467-8ADE-D273D6DE0EEC}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ouster-common\ouster-common.vcxitems*{2a454b50-b1ee-438c-822b-0dc4ff20cb8c}*SharedItemsImports = 4
+		ouster-common\ouster-common.vcxitems*{65cf1aac-6a3b-4c77-ae63-6f5cb78f07ca}*SharedItemsImports = 4
+		ouster-common\ouster-common.vcxitems*{78aedebb-60af-3f74-a3c4-2709c2845995}*SharedItemsImports = 4
+		ouster-common\ouster-common.vcxitems*{f724ce68-c8d3-4b09-a495-1a35c8706a0e}*SharedItemsImports = 9
+	EndGlobalSection
+EndGlobal

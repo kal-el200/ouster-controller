@@ -1,0 +1,45 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPNG.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindZLIB.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/SelectLibraryConfigurations.cmake
+C:/Projects/ouster-sdk/cmake/Coverage.cmake
+C:/Projects/ouster-sdk/cmake/FindEigen3.cmake
+C:/Projects/ouster-sdk/cmake/Findjsoncpp.cmake
+C:/Projects/ouster-sdk/ouster_osf/CMakeLists.txt
+C:/Projects/ouster-sdk/ouster_osf/cmake/osf_fb_utils.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/eigen3/Eigen3Config.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/eigen3/Eigen3ConfigVersion.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/eigen3/Eigen3Targets.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/flatbuffers/BuildFlatBuffers.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/flatbuffers/FlatBuffersTargets-debug.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/flatbuffers/FlatBuffersTargets-release.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/flatbuffers/FlatBuffersTargets.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/flatbuffers/FlatcTargets-release.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/flatbuffers/FlatcTargets.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/flatbuffers/flatbuffers-config-version.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/flatbuffers/flatbuffers-config.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/fmt/fmt-config-version.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/fmt/fmt-config.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/fmt/fmt-targets-debug.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/fmt/fmt-targets-release.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/fmt/fmt-targets.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/jsoncpp/jsoncpp-namespaced-targets.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/jsoncpp/jsoncpp-targets-debug.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/jsoncpp/jsoncpp-targets-release.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/jsoncpp/jsoncpp-targets.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/jsoncpp/jsoncppConfig.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/jsoncpp/jsoncppConfigVersion.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/png/vcpkg-cmake-wrapper.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/spdlog/spdlogConfig.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/spdlog/spdlogConfigTargets-debug.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/spdlog/spdlogConfigTargets-release.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/spdlog/spdlogConfigTargets.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/spdlog/spdlogConfigVersion.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/zlib/vcpkg-cmake-wrapper.cmake

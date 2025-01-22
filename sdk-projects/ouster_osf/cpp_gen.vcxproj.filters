@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\0222b53ba94d78323f3a015b1fe95b6d\chunk.bfbs.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\0222b53ba94d78323f3a015b1fe95b6d\header.bfbs.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\0222b53ba94d78323f3a015b1fe95b6d\metadata.bfbs.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\d991a21b8e7e45e817ce16523cc7b19e\common.bfbs.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\d991a21b8e7e45e817ce16523cc7b19e\extrinsics.bfbs.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\d991a21b8e7e45e817ce16523cc7b19e\lidar_scan_stream.bfbs.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\d991a21b8e7e45e817ce16523cc7b19e\lidar_sensor.bfbs.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\894cda29f9204cf7cd70c0196f0ed27f\streaming_info.bfbs.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\7bd17957d6b5c9799ee6daf4eba464aa\chunk_generated.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\7bd17957d6b5c9799ee6daf4eba464aa\header_generated.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\7bd17957d6b5c9799ee6daf4eba464aa\metadata_generated.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\3ede4c08192449fb3198c6be74c5f2e8\common_generated.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\3ede4c08192449fb3198c6be74c5f2e8\extrinsics_generated.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\3ede4c08192449fb3198c6be74c5f2e8\lidar_scan_stream_generated.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\3ede4c08192449fb3198c6be74c5f2e8\lidar_sensor_generated.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\d95e8d22e4b4d8a92991b21cc0e9f6f3\streaming_info_generated.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\820fbde841d8b593dd072513bc59ac92\cpp_gen.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\ouster_osf\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Projects\ouster-sdk\out\build\x64-debug\ouster_osf\CMakeFiles\cpp_gen" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{040A90E4-7C9A-3E25-A09F-5BB50280115F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

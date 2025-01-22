@@ -1,0 +1,28 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindOpenGL.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/SelectLibraryConfigurations.cmake
+C:/Projects/ouster-sdk/cmake/Coverage.cmake
+C:/Projects/ouster-sdk/cmake/FindEigen3.cmake
+C:/Projects/ouster-sdk/cmake/Findglfw3.cmake
+C:/Projects/ouster-sdk/ouster_viz/CMakeLists.txt
+C:/Projects/vcpkg/installed/x64-windows/share/eigen3/Eigen3Config.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/eigen3/Eigen3ConfigVersion.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/eigen3/Eigen3Targets.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glew/CopyImportedTargetProperties.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glew/glew-config.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glew/glew-targets-debug.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glew/glew-targets-release.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glew/glew-targets.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glew/vcpkg-cmake-wrapper.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glfw3/glfw3Config.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glfw3/glfw3ConfigVersion.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glfw3/glfw3Targets-debug.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glfw3/glfw3Targets-release.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/glfw3/glfw3Targets.cmake

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\f48b4b9320b01dec62598b2822e29d9d\chunk_generated.ts.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\f48b4b9320b01dec62598b2822e29d9d\header_generated.ts.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\f48b4b9320b01dec62598b2822e29d9d\metadata_generated.ts.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\9e5de391333c2055a803da3ac92f2289\common_generated.ts.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\9e5de391333c2055a803da3ac92f2289\extrinsics_generated.ts.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\9e5de391333c2055a803da3ac92f2289\lidar_scan_stream_generated.ts.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\9e5de391333c2055a803da3ac92f2289\lidar_sensor_generated.ts.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\9eb4b27f562c9b755183aac4a38f3e69\streaming_info_generated.ts.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\out\build\x64-debug\CMakeFiles\820fbde841d8b593dd072513bc59ac92\ts_gen.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ouster-sdk\ouster_osf\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Projects\ouster-sdk\out\build\x64-debug\ouster_osf\CMakeFiles\ts_gen" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{040A90E4-7C9A-3E25-A09F-5BB50280115F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

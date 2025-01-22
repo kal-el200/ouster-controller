@@ -1,0 +1,280 @@
+{
+  "sensor_info": {
+    "hostname": "127.0.0.1",
+    "prod_line": "OS-1-128",
+    "sn": "122201000998",
+    "image_rev": "ousteros-image-prod-aries-v2.3.0+20220415163956",
+    "init_id": 7109746,
+    "build_date": "2022-04-14T21:11:47Z",
+    "fw_rev": "2.3.0",
+    "mode": "1024x10",
+    "prod_pn": "840-103575-06",
+    "json_calibration_version": 4,
+    "format": {
+      "pixels_per_column": 128,
+      "columns_per_packet": 16,
+      "columns_per_frame": 1024,
+      "pixel_shift_by_row": [
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0,
+        24,
+        16,
+        8,
+        0
+      ],
+      "column_window": [ 0, 1023 ],
+      "udp_profile_lidar": "RNG19_RFL8_SIG16_NIR16_DUAL",
+      "udp_profile_imu": "LEGACY",
+      "fps": 10
+    },
+    "num_beams": 128,
+    "altitude_angles": {
+      "min": -21.82,
+      "max": 20.95
+    },
+    "azimuth_angles": {
+      "pattern": [ 4.22, 1.41, -1.40, -4.21 ]
+    },
+    "lidar_origin_to_beam_origin_mm": 15.806, // distance between lidar origin and beam origin in mm
+    "beam_to_lidar_transform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 15.806, 0, 0, 0, 1 ], // transform between beam and lidar frame
+    "imu_to_sensor_transform": [ 1, 0, 0, 6.253, 0, 1, 0, -11.775, 0, 0, 1, 7.645, 0, 0, 0, 1 ], // transform between sensor coordinate frame and imu
+    "lidar_to_sensor_transform": [ -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, 36.18, 0, 0, 0, 1 ], // transform between lidar and sensor coordinate frames
+    "extrinsic": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
+    "config": {
+      "udp_dest": "127.0.0.1",
+      "udp_port_lidar": 7502,
+      "udp_port_imu": 7503,
+
+      /** timestamp_mode - Mode controlling timestamp method. Refer to the sensor documentation for the meaning of each option
+		  * TIME_FROM_UNSPEC        - Timestamp mode unspecified
+		  * TIME_FROM_INTERNAL_OSC  - Use the internal clock
+		  * TIME_FROM_SYNC_PULSE_IN - A free running counter synced to the SYNC_PULSE_IN input counts seconds (# of pulses) and nanoseconds since sensor turn on
+		  * TIME_FROM_PTP_1588      - Synchronize with an external PTP master
+		  */
+      "timestamp_mode": "TIME_FROM_INTERNAL_OSC",
+
+      /** lidar_mode - The lidar mode for the sensor to use
+		  * UNSPEC   - unspecified
+		  * 512x10   - 10 scans of 512 columns per second
+		  * 512x20   - 20 scans of 512 columns per second
+		  * 1024x10  - 10 scans of 1024 columns per second
+		  * 1024x20  - 20 scans of 1024 columns per second
+		  * 2048x10  - 10 scans of 2048 columns per second
+		  * 4096x5   - 5 scans of 4096 columns per second. Only available on select sensors
+		  */
+      "lidar_mode": "1024x10",
+
+      /** operating_mode - Mode controlling sensor operation
+		  * NORMAL  - Normal sensor operation
+		  * STANDBY - Standby
+		  */
+      "operating_mode": "NORMAL",
+
+      /** multipurpose_io_mode - Mode controlling ways to input timesync information
+		  * OFF 			            - Multipurpose IO is turned off (default)
+		  * INPUT_NMEA_UART           - Used in conjunction with timestamp_mode::TIME_FROM_SYNC_PULSE_IN to enable time pulses in on the multipurpose io input
+		  * OUTPUT_FROM_INTERNAL_OSC  - Output a SYNC_PULSE_OUT signal synchronized with the internal clock
+		  * OUTPUT_FROM_SYNC_PULSE_IN - Output a SYNC_PULSE_OUT signal synchronized with a SYNC_PULSE_IN provided to the unit
+		  * OUTPUT_FROM_PTP_1588      - Output a SYNC_PULSE_OUT signal synchronized with an external PTP IEEE 1588 master
+		  * OUTPUT_FROM_ENCODER_ANGLE - Output a SYNC_PULSE_OUT signal with a user defined rate in an integer number of degrees
+		  */
+      "multipurpose_io_mode": "OFF",
+
+      /** udp_profile_lidar - Profile indicating packet format of lidar data
+		  * UNKNOWN
+		  * LEGACY                      - Legacy lidar data
+		  * RNG19_RFL8_SIG16_NIR16_DUAL - Dual Returns data
+		  * RNG19_RFL8_SIG16_NIR16      - Single Returns data
+		  * RNG15_RFL8_NIR8             - Single Returns Low Data Rate
+		  * FIVE_WORD_PIXEL             - Five Word Profile
+		  * FUSA_RNG15_RFL8_NIR8_DUAL   - FuSa two-word pixel
+		  */
+
+      /** azimuth_window - The window over which the sensor fires in millidegrees */
+      "azimuth_window": [ 0, 360000 ],
+
+      "signal_multiplier": 1.0,
+
+      "min_range_threshold_cm": 0,
+
+      /** sync_pulse_in_polarity - Polarity of SYNC_PULSE_IN input
+		  * ACTIVE_LOW
+		  * ACTIVE_HIGH
+		  */
+      "sync_pulse_in_polarity": "ACTIVE_HIGH",
+
+      /** sync_pulse_out_polarity - Polarity of SYNC_PULSE_OUT output
+		  * ACTIVE_LOW
+		  * ACTIVE_HIGH
+		  */
+      "sync_pulse_out_polarity": "ACTIVE_HIGH",
+
+      "sync_pulse_out_frequency": 1,
+      "sync_pulse_out_angle": 360,
+      "sync_pulse_out_pulse_width": 10,
+      "nmea_in_polarity": "ACTIVE_HIGH",
+
+      /** nmea_baud_rate - Baud rate the sensor attempts for NMEA UART input $GPRMC messages
+		  * BAUD_9600   - 9600 bits per second UART baud rate
+		  * BAUD_115200 - 115200 bits per second UART baud rate
+		  */
+      "nmea_baud_rate": "BAUD_9600",
+
+      "nmea_ignore_valid_char": false, // Whether NMEA UART input $GPRMC messages should be ignored
+      "nmea_leap_seconds": 0, // Number of leap seconds added to UDP timestamp
+      "phase_lock_enable": false, // Whether phase locking is enabled
+      "phase_lock_offset": 0, // Angle that sensors are locked to in millidegrees
+
+      /** gyro_fsr - The gyro full scale measurement range to use
+		  * NORMAL   - Higher precision lower range measurement mode
+		  * EXTENDED - Lower precision higher range measurement mode
+		  */
+      "gyro_fsr": "NORMAL",
+
+      /** accel_fsr - The accelerometer full scale measurement range to use
+		  * NORMAL   - Higher precision lower range measurement mode
+		  * EXTENDED - Lower precision higher range measurement mode
+		  */
+      "accel_fsr": "NORMAL",
+
+      /** return_order - The priority of returns for the lidar to output
+		  * ORDER_STRONGEST_TO_WEAKEST - Lidar returns the strongest returns first
+		  * ORDER_FARTHEST_TO_NEAREST  - Lidar returns the furthest returns first
+		  * ORDER_NEAREST_TO_FARTHEST  - Lidar returns the nearest returns first
+          * ORDER_DEPRECATED_STRONGEST_RETURN_FIRST - DEPRECATED: Only Present In Old Test Firmware
+		  * ORDER_DEPRECATED_LAST_RETURN_FIRST      - DEPRECATED: Only Present In Old Test Firmware
+		  */
+      "return_order": "STRONGEST_TO_WEAKEST"
+    },
+    "calibration": {
+      "reflectivity_status": false,
+      "reflectivity_timestamp": "0001-01-01T00:00:00Z"
+    }
+  },
+  "pcap": {
+    "file": "C:/Projects/ouster-sdk/pcap_samples/OS1-128_Rev-06_fw23_Urban-Drive_Dual-Returns/OS1-128_Rev-06_fw23_Urban-Drive_Dual-Returns.pcap",
+    "loop": true // Optional: loop playback when reaching end of file
+  }
+}

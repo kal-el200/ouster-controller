@@ -1,0 +1,13 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPkgConfig.cmake
+C:/Projects/ouster-sdk/cmake/Coverage.cmake
+C:/Projects/ouster-sdk/cmake/FindPcap.cmake
+C:/Projects/ouster-sdk/cmake/Findlibtins.cmake
+C:/Projects/ouster-sdk/ouster_pcap/CMakeLists.txt
+C:/Projects/vcpkg/installed/x64-windows/share/libtins/libtinsConfig.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/libtins/libtinsConfigVersion.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/libtins/libtinsTargets-debug.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/libtins/libtinsTargets-release.cmake
+C:/Projects/vcpkg/installed/x64-windows/share/libtins/libtinsTargets.cmake
