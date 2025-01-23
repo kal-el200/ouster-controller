@@ -21,12 +21,15 @@
     <ClInclude Include="SensorProxy.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="OusterController.hpp">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="OusterController.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OusterController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

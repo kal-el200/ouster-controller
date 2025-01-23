@@ -30,14 +30,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster_viz", "sdk-projects\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster_osf", "sdk-projects\ouster_osf\ouster_osf.vcxproj", "{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster-lidar-simulator", "ouster-lidar-simulator\lidar_simulator.vcxproj", "{78AEDEBB-60AF-3F74-A3C4-2709C2845995}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster-common", "ouster-common\ouster-common.vcxitems", "{F724CE68-C8D3-4B09-A495-1A35C8706A0E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster_lidar_simulator", "ouster_lidar_simulator\ouster_lidar_simulator.vcxproj", "{78AEDEBB-60AF-3F74-A3C4-2709C2845995}"
 	ProjectSection(ProjectDependencies) = postProject
-		{10254FA4-CE78-3A29-9BE3-D86C46BF4EC4} = {10254FA4-CE78-3A29-9BE3-D86C46BF4EC4}
 		{3C615257-A1C6-39F6-A295-370A60404E12} = {3C615257-A1C6-39F6-A295-370A60404E12}
 		{FD9B4FE1-C7A6-33F1-9D99-4481B8052E32} = {FD9B4FE1-C7A6-33F1-9D99-4481B8052E32}
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster-common", "ouster-common\ouster-common.vcxitems", "{F724CE68-C8D3-4B09-A495-1A35C8706A0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

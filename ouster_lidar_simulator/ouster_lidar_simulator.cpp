@@ -15,7 +15,7 @@
 #include <optional>
 
 #include "OusterHTTPServer.hpp"
-#include "PcapPlayer.hpp"
+#include "PcapPlayer.h"
 
 #ifdef _WIN32
 #include <stdlib.h>

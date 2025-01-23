@@ -10,8 +10,6 @@
 #include <memory>
 #include <omp.h>
 
-//#include "ScopedTimer.hpp"
-
 class SensorProxy
 {
 private:

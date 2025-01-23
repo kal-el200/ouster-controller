@@ -1,1 +1,7 @@
 "x64" 
+/.vs/ouster-controller/CopilotIndices/17.12.38.29086/*.db
+/.vs/ouster-controller/FileContentIndex/*.vsidx
+/.vs/ouster-controller/v17/.suo
+/.vs/ouster-controller/v17/*.db
+/ouster-controller-test/x64/Debug/ouster-c.2a454b50.tlog/*.tlog
+/ouster-controller-test/x64/Debug/*.obj

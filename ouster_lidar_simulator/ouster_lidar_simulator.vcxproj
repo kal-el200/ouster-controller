@@ -27,7 +27,7 @@
     <VcpkgEnabled>false</VcpkgEnabled>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
-    <ProjectName>ouster-lidar-simulator</ProjectName>
+    <ProjectName>ouster_lidar_simulator</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -64,26 +64,26 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ouster-lidar-simulator.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ouster-lidar-simulator</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ouster_lidar_simulator.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ouster_lidar_simulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Projects\ouster-sdk\out\build\x64-debug\examples\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">lidar_simulator.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">lidar_simulator</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ouster_lidar_simulator.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ouster_lidar_simulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Projects\ouster-sdk\out\build\x64-debug\examples\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">lidar_simulator.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">lidar_simulator</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ouster_lidar_simulator.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ouster_lidar_simulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ouster-lidar-simulator.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ouster-lidar-simulator</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ouster_lidar_simulator.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ouster_lidar_simulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
@@ -124,24 +124,25 @@
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary C:/Projects/ouster-sdk/out/build/x64-debug/examples/lidar_simulator.exe -installedDir C:/Projects/vcpkg/installed/x64-windows/debug/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+      <Command>
+		  setlocal
+		  C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary C:/Projects/ouster-sdk/out/build/x64-debug/examples/ouster_lidar_simulator.exe -installedDir C:/Projects/vcpkg/installed/x64-windows/debug/bin -OutVariable out
+		  if %errorlevel% neq 0 goto :cmEnd
+		  :cmEnd
+		  endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 :cmErrorLevel
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>ouster_client.lib;ouster_pcap.lib;jsoncpp.lib;spdlogd.lib;fmtd.lib;libcurl-d.lib;pcap.lib;tins.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Projects\vcpkg\installed\x64-windows\debug\lib;C:\Projects\vcpkg\installed\x64-windows\lib;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ouster_client.lib;ouster_pcap.lib;jsoncpp.lib;spdlog.lib;fmt.lib;libcurl.lib;pcap.lib;tins.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); C:\Projects\vcpkg\installed\x64-windows\lib;$(SolutionDir)$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Projects/ouster-sdk/out/build/x64-debug/examples/Debug/lidar_simulator.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Projects/ouster-sdk/out/build/x64-debug/examples/lidar_simulator.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(SolutionDir)$(Platform)\$(Configuration)\ouster_lidar_simulator.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(SolutionDir)$(Platform)\$(Configuration)\ouster_lidar_simulator.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -183,11 +184,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary C:/Projects/ouster-sdk/out/build/x64-debug/examples/lidar_simulator.exe -installedDir C:/Projects/vcpkg/installed/x64-windows/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+      <Command>
+		  setlocal
+		  C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary C:/Projects/ouster-sdk/out/build/x64-debug/examples/ouster_lidar_simulator.exe -installedDir C:/Projects/vcpkg/installed/x64-windows/bin -OutVariable out
+		  if %errorlevel% neq 0 goto :cmEnd
+		  :cmEnd
+		  endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 :cmErrorLevel
 exit /b %1
 :cmDone
@@ -199,8 +201,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Projects/ouster-sdk/out/build/x64-debug/examples/Release/lidar_simulator.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Projects/ouster-sdk/out/build/x64-debug/examples/lidar_simulator.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Projects/ouster-sdk/out/build/x64-debug/examples/Release/ouster_lidar_simulator.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Projects/ouster-sdk/out/build/x64-debug/examples/ouster_lidar_simulator.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -242,11 +244,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary C:/Projects/ouster-sdk/out/build/x64-debug/examples/MinSizeRel/lidar_simulator.exe -installedDir C:/Projects/vcpkg/installed/x64-windows/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+      <Command>
+		  setlocal
+		  C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary C:/Projects/ouster-sdk/out/build/x64-debug/examples/MinSizeRel/ouster_lidar_simulator.exe -installedDir C:/Projects/vcpkg/installed/x64-windows/bin -OutVariable out
+		  if %errorlevel% neq 0 goto :cmEnd
+		  :cmEnd
+		  endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 :cmErrorLevel
 exit /b %1
 :cmDone
@@ -258,8 +261,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Projects/ouster-sdk/out/build/x64-debug/examples/MinSizeRel/lidar_simulator.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Projects/ouster-sdk/out/build/x64-debug/examples/MinSizeRel/lidar_simulator.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Projects/ouster-sdk/out/build/x64-debug/examples/MinSizeRel/ouster_lidar_simulator.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Projects/ouster-sdk/out/build/x64-debug/examples/MinSizeRel/ouster_lidar_simulator.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -275,18 +278,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <DisableSpecificWarnings>4251;4275</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level2</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;WIN32_LEAN_AND_MEAN;EIGEN_MAX_ALIGN_BYTES=32;SPDLOG_SHARED_LIB;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_SHARED;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;WIN32_LEAN_AND_MEAN;EIGEN_MAX_ALIGN_BYTES=32;SPDLOG_SHARED_LIB;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_SHARED;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
@@ -303,11 +306,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary C:/Projects/ouster-sdk/out/build/x64-debug/examples/RelWithDebInfo/lidar_simulator.exe -installedDir C:/Projects/vcpkg/installed/x64-windows/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+      <Command>
+		  setlocal
+		  C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary C:/Projects/ouster-sdk/out/build/x64-debug/examples/RelWithDebInfo/ouster_lidar_simulator.exe -installedDir C:/Projects/vcpkg/installed/x64-windows/bin -OutVariable out
+		  if %errorlevel% neq 0 goto :cmEnd
+		  :cmEnd
+		  endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 :cmErrorLevel
 exit /b %1
 :cmDone
@@ -319,8 +323,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Projects/ouster-sdk/out/build/x64-debug/examples/RelWithDebInfo/lidar_simulator.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Projects/ouster-sdk/out/build/x64-debug/examples/RelWithDebInfo/lidar_simulator.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(SolutionDir)$(Platform)\$(Configuration)\ouster_lidar_simulator.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(SolutionDir)$(Platform)\$(Configuration)\ouster_lidar_simulator.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -348,10 +352,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClInclude Include="FrameValidator.hpp" />
     <ClInclude Include="OusterHTTPServer.hpp" />
-    <ClInclude Include="PcapPlayer.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="lidar_simulator.cpp" />
+    <ClCompile Include="ouster_lidar_simulator.cpp" />
+    <ClCompile Include="PcapPlayer.cpp" />
+    <ClInclude Include="PcapPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sim_config_1024x128.json" />
