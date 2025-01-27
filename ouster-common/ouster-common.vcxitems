@@ -14,9 +14,6 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="$(MSBuildThisFileDirectory)CMakeLists.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)ouster_configuration.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ScopedTimer.hpp" />
   </ItemGroup>

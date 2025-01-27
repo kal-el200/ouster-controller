@@ -189,7 +189,6 @@
       <ConformanceMode>Default</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)ouster-controller;C:\Projects\ouster-sdk\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>false</IntrinsicFunctions>
@@ -238,11 +237,10 @@
     <ClCompile Include="ouster-controller-test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DDS_Communicator\DDS_Communicator.vcxproj">
-      <Project>{88684de1-505b-4582-8268-ebaf645084aa}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\ouster-controller\ouster-controller.vcxproj">
       <Project>{65cf1aac-6a3b-4c77-ae63-6f5cb78f07ca}</Project>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
