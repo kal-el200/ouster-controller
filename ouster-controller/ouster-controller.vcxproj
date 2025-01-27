@@ -211,7 +211,7 @@
       <ConformanceMode>Default</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(NDDSHOME)\include\ndds\hpp;C:\Projects\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\ouster_client\include\optional-lite;C:\Projects\ouster-sdk\ouster_viz\include;C:\Projects\ouster-sdk\ouster_client\include;C:\Projects\vcpkg\installed\x64-windows\include\eigen3;$(Projects)\dds_communicator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(Projects)\ouster\ouster-controller\ouster-dds-model;$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(NDDSHOME)\include\ndds\hpp;$(Projects)\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\ouster_client\include\optional-lite;$(Projects)\ouster-sdk\ouster_viz\include;$(Projects)\ouster-sdk\ouster_client\include;$(Projects)\vcpkg\installed\x64-windows\include\eigen3;$(Projects)\dds_communicator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <OpenMPSupport>true</OpenMPSupport>
@@ -231,7 +231,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>ouster_client.lib;ouster_viz.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;glu32.lib;opengl32.lib;ws2_32.lib;jsoncpp.lib;fmt.lib;libcurl.lib;glfw3dll.lib;glew32.lib;spdlog.lib;dds_communicator.lib</AdditionalDependencies>
+      <AdditionalDependencies>ouster_client.lib;ouster_viz.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;glu32.lib;opengl32.lib;ws2_32.lib;jsoncpp.lib;fmt.lib;libcurl.lib;glfw3dll.lib;glew32.lib;spdlog.lib;dds_communicator.lib;ouster-dds-model.lib</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration);$(Projects)\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -278,6 +278,13 @@
   <ItemGroup>
     <None Include="client_config_dual.json" />
     <None Include="client_config_single.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DDS_Communicator\DDS_Communicator.vcxproj">
+      <Project>{bf900500-d48b-438b-827f-01512ac24ab1}</Project>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

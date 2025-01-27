@@ -1,8 +1,10 @@
 // OusterController.cpp
 #include "pch.h"
 #include "OusterController.h"
-#include "DDSCommunicator.h"
+#include "ddsCommunicator.h"
 #include "SensorProxy.h"
+#include "ouster_dds_model.hpp"
+#include "ouster_dds_plugin.hpp"
 
 using namespace communicator::DDS;
 
@@ -13,6 +15,19 @@ class OusterController::Impl
 public:
     std::unique_ptr<DDSCommunicator> dds_communicator_;
     std::vector<ouster::sensor::Sensor> sensors_;
+
+    Impl() : dds_communicator_(std::make_unique<DDSCommunicator>()) 
+    {
+        DDSCommunicatorInitParams prms
+        {
+            .DomainId = 0,
+            .QoSDefaultLibraryName = "Ouster_dds_Library",
+            .QoSDefaultProfileName = "Ouster_dds_Profile"
+        };
+
+        dds_communicator_->Init(prms);
+        create_dds_writers();
+    }
 
     static OusterController& getInstance()
     {
@@ -146,6 +161,43 @@ public:
 
         std::cout << "Starting visualization for sensors" << std::endl;
         viz.run();
+    }
+
+private:
+    void create_dds_writers() const
+    {
+        try
+        {
+            // Create writer with explicit type parameter for Ouster Message
+            auto writer = dds_communicator_->CreateWriter<Ouster::OusterMsg>("Ouster::OusterMsg");
+
+            if (writer == dds::core::null)
+            {
+                std::cerr << "Failed to create DDS writer for OusterMsg" << std::endl;
+                return;
+            }
+
+            std::cout << "Successfully created DDS writer for OusterMsg" << std::endl;
+        }
+        catch (const std::exception& e)
+        {
+            std::cerr << "Error creating DDS writer: " << e.what() << std::endl;
+        }
+    }
+
+    void publish_ouster_msg(const Ouster::OusterMsg& msg) const
+    {
+        try
+        {
+            if (!dds_communicator_->Write("Ouster::OusterMsg", msg))
+            {
+                std::cerr << "Failed to publish OusterMsg" << std::endl;
+            }
+        }
+        catch (const std::exception& e)
+        {
+            std::cerr << "Error publishing ouster message: " << e.what() << std::endl;
+        }
     }
 };
 

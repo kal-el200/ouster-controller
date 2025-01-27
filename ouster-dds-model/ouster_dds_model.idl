@@ -1,0 +1,63 @@
+
+module Ouster
+{
+	@nested
+	struct OusterRayData
+	{
+		/* LRF distance */
+		uint16 distance_first;  // distance in meters (got in millimeters from sensor, should be divided by 100 to get meters -> max range 524.00 meters needed accuracy - cm)
+		/* LRF intensity */
+		uint8 reflectivity_first;
+		
+		@optional
+		uint16 distance_second; // distance in meters (got in millimeters from sensor, should be divided by 100 to get meters -> max range 524.00 meters )
+		@optional
+		uint8 reflectivity_second;
+		
+		uint16 nir_value; 
+	};
+
+	@nested
+	struct OusterSingleFiring
+	{
+		uint16 rotational_direction_azimuth;
+		sequence<OusterRayData,128> ouster_ray_data;
+		uint64 azimuth_firing_time;
+	};
+
+
+	struct OusterMsg{
+		@optional
+		uint64 msg_index; // counter
+		int8 sensor_model_type;
+		int8 return_mode;
+		sequence<OusterSingleFiring, 500> ouster_packet;
+		@optional
+		uint8 beam_altitude_angle_type; // ouster sdk enum
+	};
+
+
+};
+
+
+
+
+// rti tools - unbounded support, modern c++
+// התקנה, זוויות גוף, 
+// ניתוח ביצועים
+// update every 4 packets (DDS) every 25ms (16 firings)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
