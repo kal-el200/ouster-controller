@@ -10,10 +10,18 @@
 // Disable warning LNK4006: symbol already defined
 #pragma warning(disable : 4006)
 
-// Add headers that you want to pre-compile here
+#include <Eigen/Dense>
+#include <ouster_configuration.hpp>
+#include <ouster/point_viz.h>
+#include <ouster/types.h>
+#include <ouster/sensor_client.h>
+#include <ouster/lidar_scan.h>
+#include <ouster/sensor_scan_source.h>
+
 #include <iostream>
 #include <vector>
 #include <string>
-// Add other necessary headers
+#include <memory>
+#include <random>
 
 #endif //PCH_H

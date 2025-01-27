@@ -15,21 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OusterController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SensorProxy.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OusterController.h">
+    <ClInclude Include="SensorProxy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OusterController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OusterController.cpp">
+    <ClCompile Include="SensorProxy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

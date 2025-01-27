@@ -1,29 +1,20 @@
 #pragma once
 
 #include <string>
-#include <vector>
-
-namespace ouster
-{
-    namespace sensor { class Sensor; struct sensor_config; }
-    namespace viz { class PointViz; }
-}
-class OusterConfiguration;
+#include <memory>
 
 class OusterController
 {
 public:
     static OusterController& getInstance();
+    bool run(std::string config_path);
+    ~OusterController();
 
     OusterController(const OusterController&) = delete;
     OusterController& operator=(const OusterController&) = delete;
 
-    bool run(std::string config_path);
-
 private:
-    OusterController() = default;
-
-    std::vector<ouster::sensor::Sensor> get_sdk_sensors(OusterConfiguration& configuration);
-    void read_sensor_config(ouster::sensor::sensor_config& config, OusterConfiguration& configuration);
-    void run_visualization(ouster::viz::PointViz& viz);
+    OusterController();
+    class Impl;
+    std::unique_ptr<Impl> pimpl_;
 };

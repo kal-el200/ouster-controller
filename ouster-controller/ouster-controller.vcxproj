@@ -176,7 +176,7 @@
       <ConformanceMode>Default</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ouster-configuration;C:\Projects\ouster-sdk\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\ouster_client\include\optional-lite;C:\Projects\Ouster\ouster-controller\ouster-configuration;C:\Projects\ouster-sdk\ouster_viz\include;C:\Projects\ouster-sdk\ouster_client\include;C:\Projects\vcpkg\installed\x64-windows\include\eigen3;C:\Projects\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(NDDSHOME)\include\ndds\hpp;$(SolutionDir)ouster-configuration;C:\Projects\ouster-sdk\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\ouster_client\include\optional-lite;C:\Projects\Ouster\ouster-controller\ouster-configuration;C:\Projects\ouster-sdk\ouster_viz\include;C:\Projects\ouster-sdk\ouster_client\include;C:\Projects\vcpkg\installed\x64-windows\include\eigen3;C:\Projects\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories); $(Projects)\dds_communicator</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <OpenMPSupport>true</OpenMPSupport>
@@ -195,10 +195,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>ouster_client.lib;ouster_viz.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;glu32.lib;opengl32.lib;ws2_32.lib;jsoncpp.lib;fmt.lib;libcurl.lib;glfw3dll.lib;glew32.lib;spdlogd.lib;tins.lib</AdditionalDependencies>
+      <AdditionalDependencies>ouster_client.lib;ouster_viz.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;glu32.lib;opengl32.lib;ws2_32.lib;jsoncpp.lib;fmt.lib;libcurl.lib;glfw3dll.lib;glew32.lib;spdlogd.lib;tins.lib;dds_communicator.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>C:\Projects\vcpkg\installed\x64-windows\debug\lib;$(SolutionDir)$(Platform)\$(Configuration);C:\Projects\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration);$(Projects)\vcpkg\installed\x64-windows\debug\lib;$(Projects)\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/machine:x64 /IGNORE:4006 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -211,7 +211,7 @@
       <ConformanceMode>Default</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Projects\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\ouster_client\include\optional-lite;C:\Projects\ouster-sdk\ouster_viz\include;C:\Projects\ouster-sdk\ouster_client\include;C:\Projects\vcpkg\installed\x64-windows\include\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(NDDSHOME)\include\ndds\hpp;C:\Projects\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\ouster_client\include\optional-lite;C:\Projects\ouster-sdk\ouster_viz\include;C:\Projects\ouster-sdk\ouster_client\include;C:\Projects\vcpkg\installed\x64-windows\include\eigen3;$(Projects)\dds_communicator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <OpenMPSupport>true</OpenMPSupport>
@@ -231,10 +231,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>ouster_client.lib;ouster_viz.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;glu32.lib;opengl32.lib;ws2_32.lib;jsoncpp.lib;fmt.lib;libcurl.lib;glfw3dll.lib;glew32.lib;spdlog.lib</AdditionalDependencies>
+      <AdditionalDependencies>ouster_client.lib;ouster_viz.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;glu32.lib;opengl32.lib;ws2_32.lib;jsoncpp.lib;fmt.lib;libcurl.lib;glfw3dll.lib;glew32.lib;spdlog.lib;dds_communicator.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration);C:\Projects\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration);$(Projects)\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/machine:x64 /IGNORE:4006 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -255,6 +255,7 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <DisableSpecificWarnings>4251;4275</DisableSpecificWarnings>
       <UseFullPaths>false</UseFullPaths>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory); $(Projects)\dds_communicator</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -266,19 +267,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="OusterController.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClInclude Include="OusterController.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="SensorProxy.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
+    <ClInclude Include="SensorProxy.h" />
+    <ClCompile Include="SensorProxy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="client_config_dual.json" />
