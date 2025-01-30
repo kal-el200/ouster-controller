@@ -9,11 +9,12 @@ using namespace communicator::DDS;
 using namespace cpp_util;
 
 template<typename Func>
+    requires ValidDataCallback<Func, OusterDynMessage>
 class OusterMsgCallback : public DataCallback<OusterDynMessage, Func>
 {
 public:
     explicit OusterMsgCallback(Func&& func)
-        : DataCallback<OusterDynMessage, Func>(std::forward<Func>(func)) 
+        : DataCallback<OusterDynMessage, Func>(std::forward<Func>(func))
     {}
 };
 
