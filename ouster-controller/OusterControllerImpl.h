@@ -12,8 +12,9 @@ template<typename Func>
 class OusterMsgCallback : public DataCallback<OusterDynMessage, Func>
 {
 public:
-    OusterMsgCallback(Func&& func)
-        : DataCallback<OusterDynMessage, Func>(std::forward<Func>(func)) {}
+    explicit OusterMsgCallback(Func&& func)
+        : DataCallback<OusterDynMessage, Func>(std::forward<Func>(func)) 
+    {}
 };
 
 // Helper function

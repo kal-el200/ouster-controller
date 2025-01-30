@@ -35,6 +35,7 @@ private:
     ouster::LidarScan scan_;  // Reuse scan object
     const std::vector<std::unique_ptr<DataCallbackBase<OusterDynMessage>>>& callbacks_;
 
+    std::unique_ptr<OusterDynMessage> CreateOusterMessage();
     void process_current_frame();
     void init_viz();
     void update_visualization();

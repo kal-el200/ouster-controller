@@ -7,7 +7,7 @@
 #include "ouster_data_model.h"
 
 
-void notified(const OusterDynMessage& msg)
+static void notified(const OusterDynMessage& msg)
 {
 	std::cout << "Arrived\n";
 }
@@ -37,7 +37,8 @@ int main(int argc, char* argv[])
     auto& controller = OusterController::getInstance();
 
     std::cout << "Registering callback..." << std::endl;
-    controller.registerOusterMsgCallback(notified);
+    std::function<void(const OusterDynMessage&)> callback = notified; // Create std::function explicitly
+    controller.registerOusterMsgCallback(std::move(callback));
 
     std::cout << "Starting controller..." << std::endl;
     bool result = controller.run(argv[1]);

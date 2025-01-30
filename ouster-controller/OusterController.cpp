@@ -19,6 +19,10 @@ OusterController& OusterController::getInstance()
 
 void OusterController::registerOusterMsgCallback(std::function<void(const OusterDynMessage&)> func)
 {
+    if (!func)
+    {
+        throw std::runtime_error("Cannot register null callback");
+    }
     pimpl_->registerOusterMsgCallback(std::move(func));
 }
 

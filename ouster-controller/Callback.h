@@ -42,15 +42,25 @@ template<typename DataType, typename Func>
 class DataCallback : public DataCallbackBase<DataType>
 {
 public:
-    DataCallback(Func&& func) : func_(std::forward<Func>(func)) {}
+    explicit DataCallback(Func&& func) : func_(std::forward<Func>(func)) 
+    {
+        if (!func_)
+        {
+            throw std::runtime_error("Callback function is not initialized");
+        }
+    }
 
     void execute(const DataType& data) override
     {
-        // func_(data);
+        if (!func_)
+        {
+            throw std::runtime_error("Callback function is null during execution");
+        }
+        func_(data);
     }
 
 private:
-    Func func_;
+    std::function<void(const DataType&)> func_;
 };
 
 
