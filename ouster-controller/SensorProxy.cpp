@@ -8,6 +8,13 @@
 
 void SensorProxy::process_current_frame()
 {
+	auto msg = std::make_unique<OusterDynMessage>();
+
+	for (auto& callback : callbacks_)
+	{
+		callback->execute(*msg);
+	}
+
 	if (current_frame_.size() > 0)
 	{
 		//std::cout << "Processing frame with " << current_frame_.size()
@@ -180,8 +187,6 @@ void SensorProxy::add_packet(const ouster::sensor::LidarPacket& packet)
 {
 	try
 	{
-		//static auto last_frame_time = std::chrono::high_resolution_clock::now();
-
 		uint32_t packet_frame_id = pf_.frame_id(packet.buf.data());
 
 		if (current_frame_.empty())
@@ -190,26 +195,20 @@ void SensorProxy::add_packet(const ouster::sensor::LidarPacket& packet)
 		}
 		else if (packet_frame_id != current_frame_id_)
 		{
-			// New frame detected, process the existing incomplete frame
 			process_current_frame();
-
-			// Measure inter-frame time
-			//auto current_time = std::chrono::high_resolution_clock::now();
-			//auto frame_duration = std::chrono::duration_cast<std::chrono::milliseconds>(
-			//	current_time - last_frame_time);
-			//std::cout << "Time between frames: " << frame_duration.count() << "ms" << std::endl;
-			//last_frame_time = current_time;
-
 			current_frame_id_ = packet_frame_id;
 		}
 
 		current_frame_.push_back(packet);
 
 		if (frame_counter_ == N_FRAMES)
-			running_ = false;
+		{
+			stop(); // Use the new stop() method
+		}
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << "Error processing packet: " << e.what() << std::endl;
+		stop(); // Stop on error
 	}
 }

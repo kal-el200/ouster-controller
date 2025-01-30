@@ -157,7 +157,7 @@
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>
       </SDLCheck>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);_DEBUG;_CONSOLE;WIN32;_WINDOWS;NOMINMAX;_USE_MATH_DEFINES;WIN32_LEAN_AND_MEAN;EIGEN_MAX_ALIGN_BYTES=32;SPDLOG_SHARED_LIB;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_SHARED;CMAKE_INTDIR="Debug";_WIN32_WINNT=0x0601</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_DEBUG;_ITERATOR_DEBUG_LEVEL=2;_CONSOLE;WIN32;_WINDOWS;NOMINMAX;_USE_MATH_DEFINES;WIN32_LEAN_AND_MEAN;EIGEN_MAX_ALIGN_BYTES=32;SPDLOG_SHARED_LIB;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_SHARED;CMAKE_INTDIR="Debug";_WIN32_WINNT=0x0601</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Projects\ouster-sdk\ouster_viz\include;$(SolutionDir)ouster-controller;$(SolutionDir)ouster-configuration;C:\Projects\ouster-sdk\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\ouster_client\include\optional-lite;C:\Projects\Ouster\ouster-controller\ouster-configuration;C:\Projects\ouster-sdk\ouster_viz\include;C:\Projects\ouster-sdk\ouster_client\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>

@@ -2,11 +2,20 @@
 
 #include <string>
 #include <memory>
+#include <functional>
+#include "ouster_data_model.h"
+#include "callback.h"
 
+
+class OusterControllerImpl;
 class OusterController
 {
 public:
     static OusterController& getInstance();
+    using OusterMsgCallback = std::function<void(OusterDynMessage)>;
+
+    void registerOusterMsgCallback(std::function<void(const OusterDynMessage&)> func);
+
     bool run(std::string config_path);
     ~OusterController();
 
@@ -15,6 +24,5 @@ public:
 
 private:
     OusterController();
-    class Impl;
-    std::unique_ptr<Impl> pimpl_;
+    std::unique_ptr<OusterControllerImpl> pimpl_;
 };

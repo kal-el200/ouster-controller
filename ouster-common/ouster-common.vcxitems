@@ -15,6 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)ouster_configuration.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ouster_data_model.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ScopedTimer.hpp" />
   </ItemGroup>
 </Project>

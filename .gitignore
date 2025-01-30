@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+/sdk-projects/ouster_client/RelWithDebInfo/*.pdb
+*.pdb
+*.recipe

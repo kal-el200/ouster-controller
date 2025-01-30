@@ -3,17 +3,47 @@
 
 #include <iostream>
 #include <OusterController.h>
+#include <Callback.h>
+#include "ouster_data_model.h"
+
+
+void notified(const OusterDynMessage& msg)
+{
+	std::cout << "Arrived\n";
+}
+
+//int main(int argc, char* argv[])
+//{
+//	if (argc < 2)
+//	{
+//		std::cerr << "Usage: " << argv[0] << " <config.json>" << std::endl;
+//		return EXIT_FAILURE;
+//	}
+//
+//	auto& controller = OusterController::getInstance();
+//	controller.registerOusterMsgCallback(notified);
+//	return controller.run(argv[1]) ? EXIT_SUCCESS : EXIT_FAILURE;
+//}
 
 int main(int argc, char* argv[])
 {
-	if (argc < 2)
-	{
-		std::cerr << "Usage: " << argv[0] << " <config.json>" << std::endl;
-		return EXIT_FAILURE;
-	}
+    if (argc < 2)
+    {
+        std::cerr << "Usage: " << argv[0] << " <config.json>" << std::endl;
+        return EXIT_FAILURE;
+    }
 
-	auto& controller = OusterController::getInstance();
-	return controller.run(argv[1]) ? EXIT_SUCCESS : EXIT_FAILURE;
+    std::cout << "Getting controller instance..." << std::endl;
+    auto& controller = OusterController::getInstance();
+
+    std::cout << "Registering callback..." << std::endl;
+    controller.registerOusterMsgCallback(notified);
+
+    std::cout << "Starting controller..." << std::endl;
+    bool result = controller.run(argv[1]);
+    std::cout << "Controller run result: " << (result ? "success" : "failure") << std::endl;
+
+    return result ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
