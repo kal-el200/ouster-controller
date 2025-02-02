@@ -31,11 +31,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster_lidar_simulator", "o
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster-controller-test", "ouster-controller-test\ouster-controller-test.vcxproj", "{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DDS_Communicator", "..\..\DDS_Communicator\DDS_Communicator.vcxproj", "{BF900500-D48B-438B-827F-01512AC24AB1}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ouster-dds-model", "ouster-dds-model\ouster-dds-model.vcxproj", "{A742DD8E-4C3F-4041-9E4F-83E236E56B63}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpp-util", "..\..\cpp-util\cpp-util.vcxproj", "{1F7FA541-D320-43EE-A4A8-12BD5B4E05AA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpp-util", "..\cpp-util\cpp-util.vcxproj", "{1F7FA541-D320-43EE-A4A8-12BD5B4E05AA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DDS_Communicator", "..\DDS_Communicator\DDS_Communicator.vcxproj", "{BF900500-D48B-438B-827F-01512AC24AB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,18 +131,6 @@ Global
 		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
 		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|Win32
 		{2A454B50-B1EE-438C-822B-0DC4FF20CB8C}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|Win32
-		{BF900500-D48B-438B-827F-01512AC24AB1}.Debug|x64.ActiveCfg = Debug|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.Debug|x64.Build.0 = Debug|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.Debug|x86.ActiveCfg = Debug|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.Debug|x86.Build.0 = Debug|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.Release|x64.ActiveCfg = Release|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.Release|x64.Build.0 = Release|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.Release|x86.ActiveCfg = Release|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.Release|x86.Build.0 = Release|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
-		{BF900500-D48B-438B-827F-01512AC24AB1}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|x64
 		{A742DD8E-4C3F-4041-9E4F-83E236E56B63}.Debug|x64.ActiveCfg = Debug|x64
 		{A742DD8E-4C3F-4041-9E4F-83E236E56B63}.Debug|x64.Build.0 = Debug|x64
 		{A742DD8E-4C3F-4041-9E4F-83E236E56B63}.Debug|x86.ActiveCfg = Debug|Win32
@@ -165,8 +153,20 @@ Global
 		{1F7FA541-D320-43EE-A4A8-12BD5B4E05AA}.Release|x86.Build.0 = Release|Win32
 		{1F7FA541-D320-43EE-A4A8-12BD5B4E05AA}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
 		{1F7FA541-D320-43EE-A4A8-12BD5B4E05AA}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
-		{1F7FA541-D320-43EE-A4A8-12BD5B4E05AA}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
-		{1F7FA541-D320-43EE-A4A8-12BD5B4E05AA}.RelWithDebInfo|x86.Build.0 = Release|Win32
+		{1F7FA541-D320-43EE-A4A8-12BD5B4E05AA}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|Win32
+		{1F7FA541-D320-43EE-A4A8-12BD5B4E05AA}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|Win32
+		{BF900500-D48B-438B-827F-01512AC24AB1}.Debug|x64.ActiveCfg = Debug|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.Debug|x64.Build.0 = Debug|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.Debug|x86.ActiveCfg = Debug|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.Debug|x86.Build.0 = Debug|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.Release|x64.ActiveCfg = Release|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.Release|x64.Build.0 = Release|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.Release|x86.ActiveCfg = Release|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.Release|x86.Build.0 = Release|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
+		{BF900500-D48B-438B-827F-01512AC24AB1}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

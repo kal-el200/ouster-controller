@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerCommandArguments>C:\Projects\Ouster\ouster-controller\ouster_lidar_simulator\sim_config_1024x128.json</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>$(ProjectDir)sim_config_1024x128.json</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerDebuggerType>Auto</LocalDebuggerDebuggerType>
     <LocalDebuggerEnvironment>
     </LocalDebuggerEnvironment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
-    <LocalDebuggerCommandArguments>C:\Projects\Ouster\ouster-controller\ouster_lidar_simulator\sim_config_1024x128.json</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>$(ProjectDir)sim_config_1024x128.json</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

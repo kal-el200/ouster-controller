@@ -180,7 +180,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <OpenMPSupport>true</OpenMPSupport>
-	  <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SupportJustMyCode>false</SupportJustMyCode>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
@@ -212,7 +212,7 @@
       <ConformanceMode>Default</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(Projects)\ouster\ouster-controller\ouster-dds-model;$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(NDDSHOME)\include\ndds\hpp;$(Projects)\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\ouster_client\include\optional-lite;$(Projects)\ouster-sdk\ouster_viz\include;$(Projects)\ouster-sdk\ouster_client\include;$(Projects)\vcpkg\installed\x64-windows\include\eigen3;$(Projects)\cpp-util;$(Projects)\dds_communicator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ouster-dds-model;$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(NDDSHOME)\include\ndds\hpp;$(Projects)\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\ouster_client\include\optional-lite;$(Projects)\ouster-sdk\ouster_viz\include;$(Projects)\ouster-sdk\ouster_client\include;$(Projects)\vcpkg\installed\x64-windows\include\eigen3;$(Projects)\cpp-util;$(Projects)\dds_communicator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <OpenMPSupport>true</OpenMPSupport>
@@ -283,13 +283,6 @@
   <ItemGroup>
     <None Include="client_config_dual.json" />
     <None Include="client_config_single.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\DDS_Communicator\DDS_Communicator.vcxproj">
-      <Project>{bf900500-d48b-438b-827f-01512ac24ab1}</Project>
-      <LinkLibraryDependencies>true</LinkLibraryDependencies>
-      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
