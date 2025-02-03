@@ -4,12 +4,13 @@
 #include <iostream>
 #include <OusterController.h>
 #include <Callback.h>
-#include "ouster_data_model.h"
+#include <ouster_dds_model.hpp>
 
+using namespace Ouster;
 
-static void notified(const OusterDynMessage& msg)
+static void notified(const OusterMsg& msg)
 {
-	std::cout << "Arrived\n";
+    std::cout << "Msg Arrived - " << msg.msg_index() << std::endl;
 }
 
 //int main(int argc, char* argv[])
@@ -37,7 +38,7 @@ int main(int argc, char* argv[])
     auto& controller = OusterController::getInstance();
 
     std::cout << "Registering callback..." << std::endl;
-    std::function<void(const OusterDynMessage&)> callback = notified; // Create std::function explicitly
+    std::function<void(const OusterMsg&)> callback = notified; // Create std::function explicitly
     controller.registerOusterMsgCallback(std::move(callback));
 
     std::cout << "Starting controller..." << std::endl;

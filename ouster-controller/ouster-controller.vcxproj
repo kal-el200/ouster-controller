@@ -212,7 +212,7 @@
       <ConformanceMode>Default</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ouster-dds-model;$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(NDDSHOME)\include\ndds\hpp;$(Projects)\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\ouster_client\include\optional-lite;$(Projects)\ouster-sdk\ouster_viz\include;$(Projects)\ouster-sdk\ouster_client\include;$(Projects)\vcpkg\installed\x64-windows\include\eigen3;$(Projects)\cpp-util;$(Projects)\dds_communicator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(NDDSHOME)\include\ndds\hpp;$(SolutionDir)ouster-dds-model;$(Projects)\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\ouster_client\include\optional-lite;$(Projects)\ouster-sdk\ouster_viz\include;$(Projects)\ouster-sdk\ouster_client\include;$(Projects)\vcpkg\installed\x64-windows\include\eigen3;$(Projects)\cpp-util;$(Projects)\dds_communicator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <OpenMPSupport>true</OpenMPSupport>

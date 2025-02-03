@@ -3,11 +3,13 @@
 #include <ouster/types.h>
 #include <ouster/lidar_scan.h>
 #include <ouster/point_viz.h>
-#include <ouster_data_model.h>
 #include "Callback.h"
 
 #include <vector>
 #include <atomic>
+
+namespace Ouster { class OusterMsg; }
+using namespace Ouster;
 
 class SensorProxy
 {
@@ -33,9 +35,9 @@ private:
     std::vector<float> viz_points_;
     float max_range_{ 100.0f };
     ouster::LidarScan scan_;  // Reuse scan object
-    const std::vector<std::unique_ptr<DataCallbackBase<OusterDynMessage>>>& callbacks_;
-
-    std::unique_ptr<OusterDynMessage> CreateOusterMessage();
+    const std::vector<std::unique_ptr<DataCallbackBase<OusterMsg>>>& callbacks_;
+    int notify_client_frequency_;
+    std::unique_ptr<OusterMsg> CreateOusterMessage();
     void process_current_frame();
     void init_viz();
     void update_visualization();
@@ -45,7 +47,8 @@ public:
     SensorProxy(
         const ouster::sensor::sensor_info& info,
         ouster::viz::PointViz& viz,
-        const std::vector<std::unique_ptr<DataCallbackBase<OusterDynMessage>>>& callbacks,
+        const std::vector<std::unique_ptr<DataCallbackBase<OusterMsg>>>& callbacks,
+        const int notify_client_frequency,
         const int n_frames = -1) :
         N_FRAMES(n_frames),
         W(info.format.columns_per_frame),
@@ -62,6 +65,7 @@ public:
         info_(info),
         scan_(W, H, info_.format.udp_profile_lidar),
         viz_points_(W* H * 3),
+        notify_client_frequency_(notify_client_frequency),
         callbacks_(callbacks)
     {
         LogSensorInformation(info);

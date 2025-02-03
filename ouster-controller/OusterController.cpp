@@ -2,9 +2,9 @@
 #include "pch.h"
 #include "OusterController.h"
 #include "ddsCommunicator.h"
-#include "SensorProxy.h"
+#include "SensorProxy.h".
 #include "ouster_dds_model.hpp"
-#include "ouster_dds_plugin.hpp"
+#include "ouster_dds_modelPlugin.hpp"
 #include "OusterControllerImpl.h"
 
 
@@ -17,7 +17,7 @@ OusterController& OusterController::getInstance()
     return instance;
 }
 
-void OusterController::registerOusterMsgCallback(std::function<void(const OusterDynMessage&)> func)
+void OusterController::registerOusterMsgCallback(OusterMsgCallback func)
 {
     if (!func)
     {

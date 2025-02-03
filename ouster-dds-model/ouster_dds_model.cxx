@@ -3,7 +3,7 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from Ouster_DDS.idl
+This file was generated from ouster_dds_model.idl
 using RTI Code Generator (rtiddsgen) version 4.3.0.
 The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
@@ -15,7 +15,7 @@ or consult the Code Generator User's Manual.
 
 #ifndef NDDS_STANDALONE_TYPE
 #include "rti/topic/cdr/Serialization.hpp"
-#include "ouster_dds_plugin.hpp"
+#include "ouster_dds_modelPlugin.hpp"
 #else
 #include "rti/topic/cdr/SerializationHelpers.hpp"
 #endif
@@ -35,11 +35,9 @@ namespace Ouster {
 
     }   
 
-    OusterRayData::OusterRayData (uint16_t distance_first_,uint8_t reflectivity_first_,const ::dds::core::optional< uint16_t >& distance_second_,const ::dds::core::optional< uint8_t >& reflectivity_second_,uint16_t nir_value_):
+    OusterRayData::OusterRayData (uint16_t distance_first_,uint8_t reflectivity_first_,uint16_t nir_value_):
         m_distance_first_(distance_first_), 
         m_reflectivity_first_(reflectivity_first_), 
-        m_distance_second_(distance_second_), 
-        m_reflectivity_second_(reflectivity_second_), 
         m_nir_value_(nir_value_) {
     }
 
@@ -48,8 +46,6 @@ namespace Ouster {
         using std::swap;
         swap(m_distance_first_, other_.m_distance_first_);
         swap(m_reflectivity_first_, other_.m_reflectivity_first_);
-        swap(m_distance_second_, other_.m_distance_second_);
-        swap(m_reflectivity_second_, other_.m_reflectivity_second_);
         swap(m_nir_value_, other_.m_nir_value_);
     }  
 
@@ -58,12 +54,6 @@ namespace Ouster {
             return false;
         }
         if (m_reflectivity_first_ != other_.m_reflectivity_first_) {
-            return false;
-        }
-        if (m_distance_second_ != other_.m_distance_second_) {
-            return false;
-        }
-        if (m_reflectivity_second_ != other_.m_reflectivity_second_) {
             return false;
         }
         if (m_nir_value_ != other_.m_nir_value_) {
@@ -82,8 +72,6 @@ namespace Ouster {
         o <<"[";
         o << "distance_first: " << sample.distance_first ()<<", ";
         o << "reflectivity_first: " << (int) sample.reflectivity_first ()<<", ";
-        o << "distance_second: " << sample.distance_second ()<<", ";
-        o << "reflectivity_second: " << sample.reflectivity_second ()<<", ";
         o << "nir_value: " << sample.nir_value ();
         o <<"]";
         return o;
@@ -93,13 +81,15 @@ namespace Ouster {
 
     OusterSingleFiring::OusterSingleFiring() :
         m_rotational_direction_azimuth_ (0) ,
-        m_azimuth_firing_time_ (0ull)  {
+        m_azimuth_firing_time_ (0ll)  {
 
     }   
 
-    OusterSingleFiring::OusterSingleFiring (uint16_t rotational_direction_azimuth_,const ::rti::core::bounded_sequence< ::Ouster::OusterRayData, 128L >& ouster_ray_data_,uint64_t azimuth_firing_time_):
+    OusterSingleFiring::OusterSingleFiring (uint16_t rotational_direction_azimuth_,const ::rti::core::bounded_sequence< ::Ouster::OusterRayData, 128L >& ouster_ray_data_,const ::rti::core::bounded_sequence< uint8_t, 128L >& reflectivity_second_,const ::rti::core::bounded_sequence< uint16_t, 128L >& distance_second_,int64_t azimuth_firing_time_):
         m_rotational_direction_azimuth_(rotational_direction_azimuth_), 
         m_ouster_ray_data_(ouster_ray_data_), 
+        m_reflectivity_second_(reflectivity_second_), 
+        m_distance_second_(distance_second_), 
         m_azimuth_firing_time_(azimuth_firing_time_) {
     }
 
@@ -108,6 +98,8 @@ namespace Ouster {
         using std::swap;
         swap(m_rotational_direction_azimuth_, other_.m_rotational_direction_azimuth_);
         swap(m_ouster_ray_data_, other_.m_ouster_ray_data_);
+        swap(m_reflectivity_second_, other_.m_reflectivity_second_);
+        swap(m_distance_second_, other_.m_distance_second_);
         swap(m_azimuth_firing_time_, other_.m_azimuth_firing_time_);
     }  
 
@@ -116,6 +108,12 @@ namespace Ouster {
             return false;
         }
         if (m_ouster_ray_data_ != other_.m_ouster_ray_data_) {
+            return false;
+        }
+        if (m_reflectivity_second_ != other_.m_reflectivity_second_) {
+            return false;
+        }
+        if (m_distance_second_ != other_.m_distance_second_) {
             return false;
         }
         if (m_azimuth_firing_time_ != other_.m_azimuth_firing_time_) {
@@ -134,6 +132,8 @@ namespace Ouster {
         o <<"[";
         o << "rotational_direction_azimuth: " << sample.rotational_direction_azimuth ()<<", ";
         o << "ouster_ray_data: " << sample.ouster_ray_data ()<<", ";
+        o << "reflectivity_second: " << sample.reflectivity_second ()<<", ";
+        o << "distance_second: " << sample.distance_second ()<<", ";
         o << "azimuth_firing_time: " << sample.azimuth_firing_time ();
         o <<"]";
         return o;
@@ -142,12 +142,14 @@ namespace Ouster {
     // ---- OusterMsg: 
 
     OusterMsg::OusterMsg() :
+        m_msg_index_ (0ull) ,
         m_sensor_model_type_ (0) ,
-        m_return_mode_ (0)  {
+        m_return_mode_ (0) ,
+        m_beam_altitude_angle_type_ (0)  {
 
     }   
 
-    OusterMsg::OusterMsg (const ::dds::core::optional< uint64_t >& msg_index_,int8_t sensor_model_type_,int8_t return_mode_,const ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 500L >& ouster_packet_,const ::dds::core::optional< uint8_t >& beam_altitude_angle_type_):
+    OusterMsg::OusterMsg (uint64_t msg_index_,int8_t sensor_model_type_,int8_t return_mode_,const ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 600L >& ouster_packet_,uint8_t beam_altitude_angle_type_):
         m_msg_index_(msg_index_), 
         m_sensor_model_type_(sensor_model_type_), 
         m_return_mode_(return_mode_), 
@@ -196,7 +198,7 @@ namespace Ouster {
         o << "sensor_model_type: " << (int) sample.sensor_model_type ()<<", ";
         o << "return_mode: " << (int) sample.return_mode ()<<", ";
         o << "ouster_packet: " << sample.ouster_packet ()<<", ";
-        o << "beam_altitude_angle_type: " << sample.beam_altitude_angle_type ();
+        o << "beam_altitude_angle_type: " << (int) sample.beam_altitude_angle_type ();
         o <<"]";
         return o;
     }
@@ -223,7 +225,7 @@ namespace rti {
 
                 static RTIBool is_initialized = RTI_FALSE;
 
-                static DDS_TypeCode_Member OusterRayData_g_tc_members[5]=
+                static DDS_TypeCode_Member OusterRayData_g_tc_members[3]=
                 {
 
                     {
@@ -263,45 +265,9 @@ namespace rti {
                         RTICdrTypeCodeAnnotations_INITIALIZER
                     }, 
                     {
-                        (char *)"distance_second",/* Member name */
-                        {
-                            2,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_NONKEY_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"reflectivity_second",/* Member name */
-                        {
-                            3,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_NONKEY_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
                         (char *)"nir_value",/* Member name */
                         {
-                            4,/* Representation ID */
+                            2,/* Representation ID */
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
                             -1, /* Bitfield bits */
                             NULL/* Member type code is assigned later */
@@ -328,7 +294,7 @@ namespace rti {
                         0, /* Ignored */
                         0, /* Ignored */
                         NULL, /* Ignored */
-                        5, /* Number of members */
+                        3, /* Number of members */
                         OusterRayData_g_tc_members, /* Members */
                         DDS_VM_NONE, /* Ignored */
                         RTICdrTypeCodeAnnotations_INITIALIZER,
@@ -348,8 +314,6 @@ namespace rti {
                 OusterRayData_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ushort;
                 OusterRayData_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_octet;
                 OusterRayData_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ushort;
-                OusterRayData_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_octet;
-                OusterRayData_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ushort;
 
                 /* Initialize the values for member annotations. */
                 OusterRayData_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_USHORT;
@@ -364,20 +328,12 @@ namespace rti {
                 OusterRayData_g_tc_members[1]._annotations._minValue._u.octet_value = RTIXCdrOctet_MIN;
                 OusterRayData_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_OCTET;
                 OusterRayData_g_tc_members[1]._annotations._maxValue._u.octet_value = RTIXCdrOctet_MAX;
+                OusterRayData_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_USHORT;
+                OusterRayData_g_tc_members[2]._annotations._defaultValue._u.ushort_value = 0;
                 OusterRayData_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_USHORT;
                 OusterRayData_g_tc_members[2]._annotations._minValue._u.ushort_value = RTIXCdrUnsignedShort_MIN;
                 OusterRayData_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_USHORT;
                 OusterRayData_g_tc_members[2]._annotations._maxValue._u.ushort_value = RTIXCdrUnsignedShort_MAX;
-                OusterRayData_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_OCTET;
-                OusterRayData_g_tc_members[3]._annotations._minValue._u.octet_value = RTIXCdrOctet_MIN;
-                OusterRayData_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_OCTET;
-                OusterRayData_g_tc_members[3]._annotations._maxValue._u.octet_value = RTIXCdrOctet_MAX;
-                OusterRayData_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_USHORT;
-                OusterRayData_g_tc_members[4]._annotations._defaultValue._u.ushort_value = 0;
-                OusterRayData_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_USHORT;
-                OusterRayData_g_tc_members[4]._annotations._minValue._u.ushort_value = RTIXCdrUnsignedShort_MIN;
-                OusterRayData_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_USHORT;
-                OusterRayData_g_tc_members[4]._annotations._maxValue._u.ushort_value = RTIXCdrUnsignedShort_MAX;
 
                 OusterRayData_g_tc._data._sampleAccessInfo = sample_access_info();
                 OusterRayData_g_tc._data._typePlugin = type_plugin_info();    
@@ -391,7 +347,7 @@ namespace rti {
 
                 ::Ouster::OusterRayData *sample;
 
-                static RTIXCdrMemberAccessInfo OusterRayData_g_memberAccessInfos[5] =
+                static RTIXCdrMemberAccessInfo OusterRayData_g_memberAccessInfos[3] =
                 {RTIXCdrMemberAccessInfo_INITIALIZER};
 
                 static RTIXCdrSampleAccessInfo OusterRayData_g_sampleAccessInfo = 
@@ -415,12 +371,6 @@ namespace rti {
                 (RTIXCdrUnsignedLong) ((char *)&sample->reflectivity_first() - (char *)sample);
 
                 OusterRayData_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->distance_second() - (char *)sample);
-
-                OusterRayData_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->reflectivity_second() - (char *)sample);
-
-                OusterRayData_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->nir_value() - (char *)sample);
 
                 OusterRayData_g_sampleAccessInfo.memberAccessInfos = 
@@ -492,8 +442,10 @@ namespace rti {
                 static RTIBool is_initialized = RTI_FALSE;
 
                 static DDS_TypeCode OusterSingleFiring_g_tc_ouster_ray_data_sequence;
+                static DDS_TypeCode OusterSingleFiring_g_tc_reflectivity_second_sequence;
+                static DDS_TypeCode OusterSingleFiring_g_tc_distance_second_sequence;
 
-                static DDS_TypeCode_Member OusterSingleFiring_g_tc_members[3]=
+                static DDS_TypeCode_Member OusterSingleFiring_g_tc_members[5]=
                 {
 
                     {
@@ -533,9 +485,45 @@ namespace rti {
                         RTICdrTypeCodeAnnotations_INITIALIZER
                     }, 
                     {
-                        (char *)"azimuth_firing_time",/* Member name */
+                        (char *)"reflectivity_second",/* Member name */
                         {
                             2,/* Representation ID */
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL, /* Ignored */
+                        RTICdrTypeCodeAnnotations_INITIALIZER
+                    }, 
+                    {
+                        (char *)"distance_second",/* Member name */
+                        {
+                            3,/* Representation ID */
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL, /* Ignored */
+                        RTICdrTypeCodeAnnotations_INITIALIZER
+                    }, 
+                    {
+                        (char *)"azimuth_firing_time",/* Member name */
+                        {
+                            4,/* Representation ID */
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
                             -1, /* Bitfield bits */
                             NULL/* Member type code is assigned later */
@@ -562,7 +550,7 @@ namespace rti {
                         0, /* Ignored */
                         0, /* Ignored */
                         NULL, /* Ignored */
-                        3, /* Number of members */
+                        5, /* Number of members */
                         OusterSingleFiring_g_tc_members, /* Members */
                         DDS_VM_NONE, /* Ignored */
                         RTICdrTypeCodeAnnotations_INITIALIZER,
@@ -578,13 +566,19 @@ namespace rti {
                 is_initialized = RTI_TRUE;
 
                 OusterSingleFiring_g_tc_ouster_ray_data_sequence = initialize_sequence_typecode< ::rti::core::bounded_sequence< ::Ouster::OusterRayData, 128L > >((128L));
+                OusterSingleFiring_g_tc_reflectivity_second_sequence = initialize_sequence_typecode< ::rti::core::bounded_sequence< uint8_t, 128L > >((128L));
+                OusterSingleFiring_g_tc_distance_second_sequence = initialize_sequence_typecode< ::rti::core::bounded_sequence< uint16_t, 128L > >((128L));
 
                 OusterSingleFiring_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
                 OusterSingleFiring_g_tc_ouster_ray_data_sequence._data._typeCode = (RTICdrTypeCode *)&::rti::topic::dynamic_type< ::Ouster::OusterRayData>::get().native();
+                OusterSingleFiring_g_tc_reflectivity_second_sequence._data._typeCode = (RTICdrTypeCode *)&DDS_g_tc_octet;
+                OusterSingleFiring_g_tc_distance_second_sequence._data._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ushort;
                 OusterSingleFiring_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ushort;
                 OusterSingleFiring_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)& OusterSingleFiring_g_tc_ouster_ray_data_sequence;
-                OusterSingleFiring_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulonglong;
+                OusterSingleFiring_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)& OusterSingleFiring_g_tc_reflectivity_second_sequence;
+                OusterSingleFiring_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)& OusterSingleFiring_g_tc_distance_second_sequence;
+                OusterSingleFiring_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
 
                 /* Initialize the values for member annotations. */
                 OusterSingleFiring_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_USHORT;
@@ -593,12 +587,12 @@ namespace rti {
                 OusterSingleFiring_g_tc_members[0]._annotations._minValue._u.ushort_value = RTIXCdrUnsignedShort_MIN;
                 OusterSingleFiring_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_USHORT;
                 OusterSingleFiring_g_tc_members[0]._annotations._maxValue._u.ushort_value = RTIXCdrUnsignedShort_MAX;
-                OusterSingleFiring_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_ULONGLONG;
-                OusterSingleFiring_g_tc_members[2]._annotations._defaultValue._u.ulong_long_value = 0ull;
-                OusterSingleFiring_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_ULONGLONG;
-                OusterSingleFiring_g_tc_members[2]._annotations._minValue._u.ulong_long_value = RTIXCdrUnsignedLongLong_MIN;
-                OusterSingleFiring_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_ULONGLONG;
-                OusterSingleFiring_g_tc_members[2]._annotations._maxValue._u.ulong_long_value = RTIXCdrUnsignedLongLong_MAX;
+                OusterSingleFiring_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_LONGLONG;
+                OusterSingleFiring_g_tc_members[4]._annotations._defaultValue._u.long_long_value = 0ll;
+                OusterSingleFiring_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_LONGLONG;
+                OusterSingleFiring_g_tc_members[4]._annotations._minValue._u.long_long_value = RTIXCdrLongLong_MIN;
+                OusterSingleFiring_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_LONGLONG;
+                OusterSingleFiring_g_tc_members[4]._annotations._maxValue._u.long_long_value = RTIXCdrLongLong_MAX;
 
                 OusterSingleFiring_g_tc._data._sampleAccessInfo = sample_access_info();
                 OusterSingleFiring_g_tc._data._typePlugin = type_plugin_info();    
@@ -612,7 +606,7 @@ namespace rti {
 
                 ::Ouster::OusterSingleFiring *sample;
 
-                static RTIXCdrMemberAccessInfo OusterSingleFiring_g_memberAccessInfos[3] =
+                static RTIXCdrMemberAccessInfo OusterSingleFiring_g_memberAccessInfos[5] =
                 {RTIXCdrMemberAccessInfo_INITIALIZER};
 
                 static RTIXCdrSampleAccessInfo OusterSingleFiring_g_sampleAccessInfo = 
@@ -636,6 +630,12 @@ namespace rti {
                 (RTIXCdrUnsignedLong) ((char *)&sample->ouster_ray_data() - (char *)sample);
 
                 OusterSingleFiring_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
+                (RTIXCdrUnsignedLong) ((char *)&sample->reflectivity_second() - (char *)sample);
+
+                OusterSingleFiring_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
+                (RTIXCdrUnsignedLong) ((char *)&sample->distance_second() - (char *)sample);
+
+                OusterSingleFiring_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->azimuth_firing_time() - (char *)sample);
 
                 OusterSingleFiring_g_sampleAccessInfo.memberAccessInfos = 
@@ -723,7 +723,7 @@ namespace rti {
                         0, /* Ignored */
                         0, /* Ignored */
                         NULL, /* Ignored */
-                        RTI_CDR_NONKEY_MEMBER, /* Is a key? */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
                         DDS_PUBLIC_MEMBER,/* Member visibility */
                         1,
                         NULL, /* Ignored */
@@ -795,7 +795,7 @@ namespace rti {
                         0, /* Ignored */
                         0, /* Ignored */
                         NULL, /* Ignored */
-                        RTI_CDR_NONKEY_MEMBER, /* Is a key? */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
                         DDS_PUBLIC_MEMBER,/* Member visibility */
                         1,
                         NULL, /* Ignored */
@@ -828,7 +828,7 @@ namespace rti {
 
                 is_initialized = RTI_TRUE;
 
-                OusterMsg_g_tc_ouster_packet_sequence = initialize_sequence_typecode< ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 500L > >((500L));
+                OusterMsg_g_tc_ouster_packet_sequence = initialize_sequence_typecode< ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 600L > >((600L));
 
                 OusterMsg_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
@@ -840,6 +840,8 @@ namespace rti {
                 OusterMsg_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_octet;
 
                 /* Initialize the values for member annotations. */
+                OusterMsg_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_ULONGLONG;
+                OusterMsg_g_tc_members[0]._annotations._defaultValue._u.ulong_long_value = 0ull;
                 OusterMsg_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_ULONGLONG;
                 OusterMsg_g_tc_members[0]._annotations._minValue._u.ulong_long_value = RTIXCdrUnsignedLongLong_MIN;
                 OusterMsg_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_ULONGLONG;
@@ -856,6 +858,8 @@ namespace rti {
                 OusterMsg_g_tc_members[2]._annotations._minValue._u.octet_value = RTIXCdrOctet_MIN;
                 OusterMsg_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_OCTET;
                 OusterMsg_g_tc_members[2]._annotations._maxValue._u.octet_value = RTIXCdrOctet_MAX;
+                OusterMsg_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_OCTET;
+                OusterMsg_g_tc_members[4]._annotations._defaultValue._u.octet_value = 0;
                 OusterMsg_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_OCTET;
                 OusterMsg_g_tc_members[4]._annotations._minValue._u.octet_value = RTIXCdrOctet_MIN;
                 OusterMsg_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_OCTET;
@@ -974,8 +978,6 @@ namespace dds {
         {
             sample.distance_first(0);
             sample.reflectivity_first(0);
-            ::rti::topic::reset_sample(sample.distance_second());
-            ::rti::topic::reset_sample(sample.reflectivity_second());
             sample.nir_value(0);
         }
 
@@ -988,12 +990,16 @@ namespace dds {
         {
             sample.rotational_direction_azimuth(0);
             ::rti::topic::reset_sample(sample.ouster_ray_data());
-            sample.azimuth_firing_time(0ull);
+            ::rti::topic::reset_sample(sample.reflectivity_second());
+            ::rti::topic::reset_sample(sample.distance_second());
+            sample.azimuth_firing_time(0ll);
         }
 
         void topic_type_support< ::Ouster::OusterSingleFiring >::allocate_sample(::Ouster::OusterSingleFiring& sample, int, int) 
         {
             ::rti::topic::allocate_sample(sample.ouster_ray_data(),  128L, -1);
+            ::rti::topic::allocate_sample(sample.reflectivity_second(),  128L, -1);
+            ::rti::topic::allocate_sample(sample.distance_second(),  128L, -1);
         }
         void topic_type_support< ::Ouster::OusterMsg >:: register_type(
             ::dds::domain::DomainParticipant& participant,
@@ -1051,16 +1057,16 @@ namespace dds {
 
         void topic_type_support< ::Ouster::OusterMsg >::reset_sample(::Ouster::OusterMsg& sample) 
         {
-            ::rti::topic::reset_sample(sample.msg_index());
+            sample.msg_index(0ull);
             sample.sensor_model_type(0);
             sample.return_mode(0);
             ::rti::topic::reset_sample(sample.ouster_packet());
-            ::rti::topic::reset_sample(sample.beam_altitude_angle_type());
+            sample.beam_altitude_angle_type(0);
         }
 
         void topic_type_support< ::Ouster::OusterMsg >::allocate_sample(::Ouster::OusterMsg& sample, int, int) 
         {
-            ::rti::topic::allocate_sample(sample.ouster_packet(),  500L, -1);
+            ::rti::topic::allocate_sample(sample.ouster_packet(),  600L, -1);
         }
     }
 }  

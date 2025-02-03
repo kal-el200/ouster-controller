@@ -1,20 +1,27 @@
 
 module Ouster
 {
+/* typedef enum {
+	E_SENSOR_MODEL_TYPE_OS0_32                    = 0,
+	E_SENSOR_MODEL_TYPE_OS0_64                    = 1,
+	E_SENSOR_MODEL_TYPE_OS0_128                   = 2,
+	E_SENSOR_MODEL_TYPE_OS1_32                    = 3,
+	E_SENSOR_MODEL_TYPE_OS1_64                    = 4,
+	E_SENSOR_MODEL_TYPE_OS1_128                   = 5,
+	E_SENSOR_MAX_NUM       						  = 6
+}E_SENSOR_MODEL_TYPE; */
+
 	@nested
 	struct OusterRayData
 	{
 		/* LRF distance */
-		uint16 distance_first;  // distance in meters (got in millimeters from sensor, should be divided by 100 to get meters -> max range 524.00 meters needed accuracy - cm)
+		uint16 distance_first;  // distance in meters (got in millimeters from sensor, should be divided by 100 to get meters -> max range 524.00 meters )
 		/* LRF intensity */
 		uint8 reflectivity_first;
-		
-		@optional
-		uint16 distance_second; // distance in meters (got in millimeters from sensor, should be divided by 100 to get meters -> max range 524.00 meters )
-		@optional
-		uint8 reflectivity_second;
-		
 		uint16 nir_value; 
+		
+		//uint16 distance_second; // distance in meters (got in millimeters from sensor, should be divided by 100 to get meters -> max range 524.00 meters )
+		//uint8 reflectivity_second;
 	};
 
 	@nested
@@ -22,21 +29,20 @@ module Ouster
 	{
 		uint16 rotational_direction_azimuth;
 		sequence<OusterRayData,128> ouster_ray_data;
-		uint64 azimuth_firing_time;
+		sequence<uint8,128> reflectivity_second;
+		sequence<uint16,128> distance_second;
+		int64 azimuth_firing_time;
 	};
 
 
 	struct OusterMsg{
-		@optional
+		
 		uint64 msg_index; // counter
 		int8 sensor_model_type;
 		int8 return_mode;
-		sequence<OusterSingleFiring, 500> ouster_packet;
-		@optional
+		sequence<OusterSingleFiring, 600> ouster_packet;
 		uint8 beam_altitude_angle_type; // ouster sdk enum
 	};
-
-
 };
 
 

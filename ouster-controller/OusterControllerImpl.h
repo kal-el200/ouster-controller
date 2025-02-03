@@ -2,19 +2,21 @@
 
 #include "pch.h"
 #include "Callback.h"
-#include <ddsCommunicator.h>
+#include "ddsCommunicator.h"
 #include "cpp_util.hpp"
+#include "ouster_dds_model.hpp"
 
 using namespace communicator::DDS;
 using namespace cpp_util;
+using namespace Ouster;
 
 template<typename Func>
-    requires ValidDataCallback<Func, OusterDynMessage>
-class OusterMsgCallback : public DataCallback<OusterDynMessage, Func>
+    requires ValidDataCallback<Func, OusterMsg>
+class OusterMsgCallback : public DataCallback<OusterMsg, Func>
 {
 public:
     explicit OusterMsgCallback(Func&& func)
-        : DataCallback<OusterDynMessage, Func>(std::forward<Func>(func))
+        : DataCallback<OusterMsg, Func>(std::forward<Func>(func))
     {}
 };
 
@@ -30,7 +32,7 @@ class OusterControllerImpl
 private:
     const int N_FRAMES = -1;
 
-    std::vector<std::unique_ptr<DataCallbackBase<OusterDynMessage>>> ousterMsgCallbacks_;
+    std::vector<std::unique_ptr<DataCallbackBase<OusterMsg>>> ousterMsgCallbacks_;
     std::unique_ptr<DDSCommunicator> dds_communicator_;
     std::vector<ouster::sensor::Sensor> sensors_;
 
@@ -213,11 +215,13 @@ public:
             std::cout << "Creating sensor proxies..." << std::endl;
             std::vector<std::unique_ptr<SensorProxy>> sensor_proxies;
 
+            auto notify_client_frequency = configuration.get<int>("client.notify_client_frequency");
+
             for (const auto& info : infos)
             {
                 std::cout << "Creating sensor proxy " << info.sn << std::endl;
                 sensor_proxies.emplace_back(
-                    std::make_unique<SensorProxy>(info, viz, ousterMsgCallbacks_, N_FRAMES));
+                    std::make_unique<SensorProxy>(info, viz, ousterMsgCallbacks_, notify_client_frequency, N_FRAMES));
             }
 
             std::thread capture_thread([&]() {

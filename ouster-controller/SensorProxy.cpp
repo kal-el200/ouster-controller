@@ -4,129 +4,14 @@
 
 #include <atomic>
 #include <omp.h>
+#include <ouster_dds_model.hpp>
 
+using namespace Ouster;
 
-std::unique_ptr<OusterDynMessage> SensorProxy::CreateOusterMessage()
+std::unique_ptr<OusterMsg> SensorProxy::CreateOusterMessage()
 {
-	auto msg = std::make_unique<OusterDynMessage>();
-
-	// Populate message structure
-	msg->m_Presence_Vector_1byte = 1;
-	auto& multilayer_data = msg->m_ouster_multilayer_data;
-
-	multilayer_data.m_msg_index = frame_counter_;
-
-	// Set sensor model based on info_
-	if (info_.prod_line == "OS-1-64")
-		multilayer_data.m_sensor_model = SensorModelType::SENSOR_MODEL_TYPE_OS1_64;
-	else if (info_.prod_line == "OS-1-128")
-		multilayer_data.m_sensor_model = SensorModelType::SENSOR_MODEL_TYPE_OS1_128;
-
-	// Set return mode based on UDP profile
-	multilayer_data.m_return_mode = (info_.format.udp_profile_lidar == ouster::sensor::UDPProfileLidar::PROFILE_RNG19_RFL8_SIG16_NIR16_DUAL)
-		? ReturnMode::RETURN_MODE_DUAL
-		: ReturnMode::RETURN_MODE_SINGLE;
-
-	// Populate packet data
-	auto& packet_dyn = multilayer_data.m_ouster_packet_array_dyn;
-	packet_dyn.m_num_of_elements = static_cast<unsigned short>(current_frame_.size());
-
-	// Process each packet
-	for (size_t packet_idx = 0; packet_idx < current_frame_.size() && packet_idx < 500; packet_idx++)
-	{
-		auto& packet_data = packet_dyn.m_ouster_packet_struct_array[packet_idx];
-		const auto& packet = current_frame_[packet_idx];
-
-		packet_data.m_is_exists = 1;
-		auto& one_azimuth = packet_data.m_ouster_one_azimuth;
-
-		// Get first column data from packet
-		const uint8_t* col_buf = pf_.nth_col(0, packet.buf.data());
-
-		// Set azimuth measurement ID
-		one_azimuth.m_rotational_direction_azimuth = pf_.col_measurement_id(col_buf);
-
-		// Set timestamp
-		uint64_t ts = pf_.col_timestamp(col_buf);
-		auto time = std::chrono::system_clock::now();
-		auto tm = std::chrono::system_clock::to_time_t(time);
-		auto local_tm = *localtime(&tm);
-
-		one_azimuth.m_azimuth_firing_time.miliseconds = static_cast<unsigned short>((ts / 1000000) % 1000);
-		one_azimuth.m_azimuth_firing_time.Seconds = static_cast<unsigned char>(local_tm.tm_sec);
-		one_azimuth.m_azimuth_firing_time.Minutes = static_cast<unsigned char>(local_tm.tm_min);
-		one_azimuth.m_azimuth_firing_time.Hour = static_cast<unsigned char>(local_tm.tm_hour);
-		one_azimuth.m_azimuth_firing_time.Day = static_cast<unsigned char>(local_tm.tm_mday);
-
-		// Temporary arrays to store channel data
-		std::vector<uint32_t> range_data(info_.format.pixels_per_column);
-		std::vector<uint8_t> reflectivity_data(info_.format.pixels_per_column);
-		std::vector<uint16_t> signal_data(info_.format.pixels_per_column);
-
-		// Get channel data using col_field
-		pf_.col_field(col_buf, ouster::sensor::ChanField::RANGE, range_data.data(), 1);
-		pf_.col_field(col_buf, ouster::sensor::ChanField::REFLECTIVITY, reflectivity_data.data(), 1);
-		pf_.col_field(col_buf, ouster::sensor::ChanField::SIGNAL, signal_data.data(), 1);
-
-		std::vector<uint32_t> range2_data;
-		std::vector<uint8_t> reflectivity2_data;
-
-		if (multilayer_data.m_return_mode == ReturnMode::RETURN_MODE_DUAL)
-		{
-			range2_data.resize(info_.format.pixels_per_column);
-			reflectivity2_data.resize(info_.format.pixels_per_column);
-			pf_.col_field(col_buf, ouster::sensor::ChanField::RANGE2, range2_data.data(), 1);
-			pf_.col_field(col_buf, ouster::sensor::ChanField::REFLECTIVITY2, reflectivity2_data.data(), 1);
-		}
-
-		// Process each channel/pixel in the column
-		for (size_t ch = 0; ch < info_.format.pixels_per_column && ch < 128; ch++)
-		{
-			auto& ray_data = one_azimuth.m_ouster_ray_data[ch];
-
-			// First returns
-			ray_data.m_distance_first = static_cast<unsigned short>(range_data[ch]);
-			ray_data.m_reflectivity_first = reflectivity_data[ch];
-			ray_data.m_nir_value = signal_data[ch];
-
-			// Second returns if in dual mode
-			if (multilayer_data.m_return_mode == ReturnMode::RETURN_MODE_DUAL)
-			{
-				ray_data.m_distance_second = static_cast<unsigned short>(range2_data[ch]);
-				ray_data.m_reflectivity_second = reflectivity2_data[ch];
-			}
-			else
-			{
-				ray_data.m_distance_second = 0;
-				ray_data.m_reflectivity_second = 0;
-			}
-		}
-	}
-
-	// Set beam altitude angle type
-	const auto& altitude_angles = info_.beam_altitude_angles;
-	if (!altitude_angles.empty())
-	{
-		if (std::all_of(altitude_angles.begin(), altitude_angles.end(),
-			[](double angle) { return angle >= 0; }))
-		{
-			msg->m_beam_altitude_angle_type = 2; // above horizon
-		}
-		else if (std::all_of(altitude_angles.begin(), altitude_angles.end(),
-			[](double angle) { return angle <= 0; }))
-		{
-			msg->m_beam_altitude_angle_type = 3; // below horizon
-		}
-		else
-		{
-			msg->m_beam_altitude_angle_type = 1; // gradient
-		}
-	}
-	else
-	{
-		msg->m_beam_altitude_angle_type = 0; // uniform
-	}
-
+	auto msg = std::make_unique<OusterMsg>();
+	msg->msg_index(frame_counter_);
 	return msg;
 }
 

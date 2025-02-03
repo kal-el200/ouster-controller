@@ -3,18 +3,18 @@
 #include <string>
 #include <memory>
 #include <functional>
-#include "ouster_data_model.h"
 #include "callback.h"
 
-
 class OusterControllerImpl;
+namespace Ouster { class OusterMsg; }
+
 class OusterController
 {
 public:
     static OusterController& getInstance();
-    using OusterMsgCallback = std::function<void(OusterDynMessage)>;
+    using OusterMsgCallback = std::function<void(const Ouster::OusterMsg&)>;
 
-    void registerOusterMsgCallback(std::function<void(const OusterDynMessage&)> func);
+    void registerOusterMsgCallback(OusterMsgCallback func);
 
     bool run(std::string config_path);
     ~OusterController();

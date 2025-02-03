@@ -226,11 +226,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ouster_dds_model.hpp" />
-    <ClInclude Include="ouster_dds_plugin.hpp" />
+    <ClInclude Include="ouster_dds_modelPlugin.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ouster_dds_model.cxx" />
-    <ClCompile Include="ouster_dds_plugin.cxx" />
+    <ClCompile Include="ouster_dds_modelPlugin.cxx" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ouster_dds_model.idl" />

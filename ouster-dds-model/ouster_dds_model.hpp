@@ -3,15 +3,15 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from Ouster_DDS.idl
+This file was generated from ouster_dds_model.idl
 using RTI Code Generator (rtiddsgen) version 4.3.0.
 The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the Code Generator User's Manual.
 */
 
-#ifndef Ouster_DDS_463313723_hpp
-#define Ouster_DDS_463313723_hpp
+#ifndef ouster_dds_model_1522706435_hpp
+#define ouster_dds_model_1522706435_hpp
 
 #include <iosfwd>
 
@@ -70,7 +70,7 @@ namespace Ouster {
 
         OusterRayData();
 
-        OusterRayData(uint16_t distance_first_,uint8_t reflectivity_first_,const ::dds::core::optional< uint16_t >& distance_second_,const ::dds::core::optional< uint8_t >& reflectivity_second_,uint16_t nir_value_);
+        OusterRayData(uint16_t distance_first_,uint8_t reflectivity_first_,uint16_t nir_value_);
 
         uint16_t& distance_first() noexcept {
             return m_distance_first_;
@@ -98,38 +98,6 @@ namespace Ouster {
             m_reflectivity_first_ = value;
         }
 
-        ::dds::core::optional< uint16_t >& distance_second() noexcept {
-            return m_distance_second_;
-        }
-
-        const ::dds::core::optional< uint16_t >& distance_second() const noexcept {
-            return m_distance_second_;
-        }
-
-        void distance_second(const ::dds::core::optional< uint16_t >& value) {
-
-            m_distance_second_ = value;
-        }
-
-        void distance_second(::dds::core::optional< uint16_t >&& value) {
-            m_distance_second_ = std::move(value);
-        }
-        ::dds::core::optional< uint8_t >& reflectivity_second() noexcept {
-            return m_reflectivity_second_;
-        }
-
-        const ::dds::core::optional< uint8_t >& reflectivity_second() const noexcept {
-            return m_reflectivity_second_;
-        }
-
-        void reflectivity_second(const ::dds::core::optional< uint8_t >& value) {
-
-            m_reflectivity_second_ = value;
-        }
-
-        void reflectivity_second(::dds::core::optional< uint8_t >&& value) {
-            m_reflectivity_second_ = std::move(value);
-        }
         uint16_t& nir_value() noexcept {
             return m_nir_value_;
         }
@@ -152,8 +120,6 @@ namespace Ouster {
 
         uint16_t m_distance_first_;
         uint8_t m_reflectivity_first_;
-        ::dds::core::optional< uint16_t > m_distance_second_;
-        ::dds::core::optional< uint8_t > m_reflectivity_second_;
         uint16_t m_nir_value_;
 
     };
@@ -170,13 +136,17 @@ namespace Ouster {
     // other dll-exported types
     template class NDDSUSERDllExport std::allocator< ::Ouster::OusterRayData >;
     template class NDDSUSERDllExport std::vector< ::Ouster::OusterRayData >;
+    template class NDDSUSERDllExport std::allocator< uint8_t >;
+    template class NDDSUSERDllExport std::vector< uint8_t >;
+    template class NDDSUSERDllExport std::allocator< uint16_t >;
+    template class NDDSUSERDllExport std::vector< uint16_t >;
     #endif
     class NDDSUSERDllExport OusterSingleFiring {
       public:
 
         OusterSingleFiring();
 
-        OusterSingleFiring(uint16_t rotational_direction_azimuth_,const ::rti::core::bounded_sequence< ::Ouster::OusterRayData, 128L >& ouster_ray_data_,uint64_t azimuth_firing_time_);
+        OusterSingleFiring(uint16_t rotational_direction_azimuth_,const ::rti::core::bounded_sequence< ::Ouster::OusterRayData, 128L >& ouster_ray_data_,const ::rti::core::bounded_sequence< uint8_t, 128L >& reflectivity_second_,const ::rti::core::bounded_sequence< uint16_t, 128L >& distance_second_,int64_t azimuth_firing_time_);
 
         uint16_t& rotational_direction_azimuth() noexcept {
             return m_rotational_direction_azimuth_;
@@ -207,15 +177,47 @@ namespace Ouster {
         void ouster_ray_data(::rti::core::bounded_sequence< ::Ouster::OusterRayData, 128L >&& value) {
             m_ouster_ray_data_ = std::move(value);
         }
-        uint64_t& azimuth_firing_time() noexcept {
+        ::rti::core::bounded_sequence< uint8_t, 128L >& reflectivity_second() noexcept {
+            return m_reflectivity_second_;
+        }
+
+        const ::rti::core::bounded_sequence< uint8_t, 128L >& reflectivity_second() const noexcept {
+            return m_reflectivity_second_;
+        }
+
+        void reflectivity_second(const ::rti::core::bounded_sequence< uint8_t, 128L >& value) {
+
+            m_reflectivity_second_ = value;
+        }
+
+        void reflectivity_second(::rti::core::bounded_sequence< uint8_t, 128L >&& value) {
+            m_reflectivity_second_ = std::move(value);
+        }
+        ::rti::core::bounded_sequence< uint16_t, 128L >& distance_second() noexcept {
+            return m_distance_second_;
+        }
+
+        const ::rti::core::bounded_sequence< uint16_t, 128L >& distance_second() const noexcept {
+            return m_distance_second_;
+        }
+
+        void distance_second(const ::rti::core::bounded_sequence< uint16_t, 128L >& value) {
+
+            m_distance_second_ = value;
+        }
+
+        void distance_second(::rti::core::bounded_sequence< uint16_t, 128L >&& value) {
+            m_distance_second_ = std::move(value);
+        }
+        int64_t& azimuth_firing_time() noexcept {
             return m_azimuth_firing_time_;
         }
 
-        const uint64_t& azimuth_firing_time() const noexcept {
+        const int64_t& azimuth_firing_time() const noexcept {
             return m_azimuth_firing_time_;
         }
 
-        void azimuth_firing_time(uint64_t value) {
+        void azimuth_firing_time(int64_t value) {
 
             m_azimuth_firing_time_ = value;
         }
@@ -229,7 +231,9 @@ namespace Ouster {
 
         uint16_t m_rotational_direction_azimuth_;
         ::rti::core::bounded_sequence< ::Ouster::OusterRayData, 128L > m_ouster_ray_data_;
-        uint64_t m_azimuth_firing_time_;
+        ::rti::core::bounded_sequence< uint8_t, 128L > m_reflectivity_second_;
+        ::rti::core::bounded_sequence< uint16_t, 128L > m_distance_second_;
+        int64_t m_azimuth_firing_time_;
 
     };
 
@@ -251,24 +255,21 @@ namespace Ouster {
 
         OusterMsg();
 
-        OusterMsg(const ::dds::core::optional< uint64_t >& msg_index_,int8_t sensor_model_type_,int8_t return_mode_,const ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 500L >& ouster_packet_,const ::dds::core::optional< uint8_t >& beam_altitude_angle_type_);
+        OusterMsg(uint64_t msg_index_,int8_t sensor_model_type_,int8_t return_mode_,const ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 600L >& ouster_packet_,uint8_t beam_altitude_angle_type_);
 
-        ::dds::core::optional< uint64_t >& msg_index() noexcept {
+        uint64_t& msg_index() noexcept {
             return m_msg_index_;
         }
 
-        const ::dds::core::optional< uint64_t >& msg_index() const noexcept {
+        const uint64_t& msg_index() const noexcept {
             return m_msg_index_;
         }
 
-        void msg_index(const ::dds::core::optional< uint64_t >& value) {
+        void msg_index(uint64_t value) {
 
             m_msg_index_ = value;
         }
 
-        void msg_index(::dds::core::optional< uint64_t >&& value) {
-            m_msg_index_ = std::move(value);
-        }
         int8_t& sensor_model_type() noexcept {
             return m_sensor_model_type_;
         }
@@ -295,38 +296,35 @@ namespace Ouster {
             m_return_mode_ = value;
         }
 
-        ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 500L >& ouster_packet() noexcept {
+        ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 600L >& ouster_packet() noexcept {
             return m_ouster_packet_;
         }
 
-        const ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 500L >& ouster_packet() const noexcept {
+        const ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 600L >& ouster_packet() const noexcept {
             return m_ouster_packet_;
         }
 
-        void ouster_packet(const ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 500L >& value) {
+        void ouster_packet(const ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 600L >& value) {
 
             m_ouster_packet_ = value;
         }
 
-        void ouster_packet(::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 500L >&& value) {
+        void ouster_packet(::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 600L >&& value) {
             m_ouster_packet_ = std::move(value);
         }
-        ::dds::core::optional< uint8_t >& beam_altitude_angle_type() noexcept {
+        uint8_t& beam_altitude_angle_type() noexcept {
             return m_beam_altitude_angle_type_;
         }
 
-        const ::dds::core::optional< uint8_t >& beam_altitude_angle_type() const noexcept {
+        const uint8_t& beam_altitude_angle_type() const noexcept {
             return m_beam_altitude_angle_type_;
         }
 
-        void beam_altitude_angle_type(const ::dds::core::optional< uint8_t >& value) {
+        void beam_altitude_angle_type(uint8_t value) {
 
             m_beam_altitude_angle_type_ = value;
         }
 
-        void beam_altitude_angle_type(::dds::core::optional< uint8_t >&& value) {
-            m_beam_altitude_angle_type_ = std::move(value);
-        }
         bool operator == (const OusterMsg& other_) const;
         bool operator != (const OusterMsg& other_) const;
 
@@ -334,11 +332,11 @@ namespace Ouster {
 
       private:
 
-        ::dds::core::optional< uint64_t > m_msg_index_;
+        uint64_t m_msg_index_;
         int8_t m_sensor_model_type_;
         int8_t m_return_mode_;
-        ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 500L > m_ouster_packet_;
-        ::dds::core::optional< uint8_t > m_beam_altitude_angle_type_;
+        ::rti::core::bounded_sequence< ::Ouster::OusterSingleFiring, 600L > m_ouster_packet_;
+        uint8_t m_beam_altitude_angle_type_;
 
     };
 
@@ -488,5 +486,5 @@ namespace rti {
 #define NDDSUSERDllExport
 #endif
 
-#endif // Ouster_DDS_463313723_hpp
+#endif // ouster_dds_model_1522706435_hpp
 

@@ -1,7 +1,8 @@
 {
   "client": {
     "log_level": "debug",
-    "output_file_base": "cloud_"
+		"output_file_base": "cloud_",
+		"notify_client_frequency": 4 // number of notifications a second made from ouster-controller to client
   },
 	"sensor": {
 		"hostname": "127.0.0.1",
