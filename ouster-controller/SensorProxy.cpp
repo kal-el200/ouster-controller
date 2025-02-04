@@ -8,29 +8,11 @@
 
 using namespace Ouster;
 
-std::unique_ptr<OusterMsg> SensorProxy::CreateOusterMessage()
-{
-	auto msg = std::make_unique<OusterMsg>();
-	msg->msg_index(frame_counter_);
-	return msg;
-}
-
 void SensorProxy::process_current_frame()
 {
-	auto msg = CreateOusterMessage();
-
-	// Execute callbacks
-	for (auto& callback : callbacks_)
-	{
-		callback->execute(*msg);
-	}
-
-	if (!current_frame_.empty())
-	{
-		update_visualization();
-		current_frame_.clear();
-		frame_counter_++;
-	}
+	update_visualization();
+	current_frame_.clear();
+	frame_counter_++;
 }
 
 void SensorProxy::init_viz()
@@ -191,12 +173,91 @@ void SensorProxy::LogSensorInformation(const ouster::sensor::sensor_info& info)
 	}
 }
 
+std::unique_ptr<OusterMsg> SensorProxy::CreateOusterMessage(
+	const ouster::LidarScan& scan,
+	const std::vector<ouster::sensor::LidarPacket>& packets)
+{
+	auto msg = std::make_unique<OusterMsg>();
+
+	const auto& it = SENSOR_MODEL_TYPES.find(info_.prod_line);
+	if (it == SENSOR_MODEL_TYPES.end())
+	{
+		std::cout << "No sensor model type was found for product line " << info_.prod_line << std::endl;
+		return nullptr;
+	}
+
+	msg->sensor_model_type(it->second);
+
+	bool is_dual_returns = (
+		info_.format.udp_profile_lidar == ouster::sensor::UDPProfileLidar::PROFILE_RNG19_RFL8_SIG16_NIR16_DUAL ||
+		info_.format.udp_profile_lidar == ouster::sensor::UDPProfileLidar::PROFILE_FUSA_RNG15_RFL8_NIR8_DUAL);
+
+	msg->return_mode(is_dual_returns ? 1 : 0);
+
+	auto& ouster_packet = msg->ouster_packet();
+	size_t num_firings = std::min(size_t{ 600 }, size_t{ scan.w });
+	ouster_packet.resize(num_firings);
+
+	const auto& range_field = scan.field<uint32_t>(ouster::sensor::ChanField::RANGE);
+	const auto& reflectivity_field = scan.field<uint8_t>(ouster::sensor::ChanField::REFLECTIVITY);
+	const auto& signal_field = scan.field<uint16_t>(ouster::sensor::ChanField::SIGNAL);
+	const auto& near_ir_field = scan.field<uint16_t>(ouster::sensor::ChanField::NEAR_IR);
+
+	for (size_t i = 0; i < num_firings; i++)
+	{
+		auto& firing = ouster_packet[i];
+
+		// Calculate which packet and column within packet this firing corresponds to
+		size_t packet_idx = i / COLS_PER_PACKET;
+		size_t col_within_packet = i % COLS_PER_PACKET;
+
+		if (packet_idx >= packets.size())
+		{
+			std::cerr << "Packet index out of bounds: " << packet_idx << " >= " << packets.size() << std::endl;
+			continue;
+		}
+
+		const uint8_t* col_buf = pf_.nth_col(col_within_packet, packets[packet_idx].buf.data());
+		if (!col_buf)
+		{
+			std::cerr << "Invalid column buffer for packet " << packet_idx << " column " << col_within_packet << std::endl;
+			continue;
+		}
+
+		uint16_t measurement_id = pf_.col_measurement_id(col_buf);
+		uint16_t azimuth = (measurement_id * 36000) / W;
+		firing.rotational_direction_azimuth(azimuth);
+
+		firing.azimuth_firing_time(std::chrono::duration_cast<std::chrono::nanoseconds>(
+			std::chrono::system_clock::now().time_since_epoch()).count());
+
+		auto& ray_data = firing.ouster_ray_data();
+		ray_data.resize(scan.h);
+
+		for (size_t j = 0; j < scan.h; j++)
+		{
+			auto& ray = ray_data[j];
+			ray.distance_first(range_field(j, i));
+			ray.reflectivity_first(reflectivity_field(j, i));
+			ray.nir_value(near_ir_field(j, i));
+		}
+	}
+
+	msg->msg_index(msg_index_++);
+	msg->beam_altitude_angle_type(beam_altitude_angle_type_);
+
+	return msg;
+}
+
 void SensorProxy::add_packet(const ouster::sensor::LidarPacket& packet)
 {
+	static std::vector<ouster::sensor::LidarPacket> message_packets;
+
 	try
 	{
 		uint32_t packet_frame_id = pf_.frame_id(packet.buf.data());
 
+		// Frame management
 		if (current_frame_.empty())
 		{
 			current_frame_id_ = packet_frame_id;
@@ -205,18 +266,53 @@ void SensorProxy::add_packet(const ouster::sensor::LidarPacket& packet)
 		{
 			process_current_frame();
 			current_frame_id_ = packet_frame_id;
+			message_packets.clear();
 		}
 
+		// Add to current frame (for visualization)
 		current_frame_.push_back(packet);
+
+		// Message packet management
+		message_packets.push_back(packet);
+
+		if (message_packets.size() >= NUM_PACKETS_PER_MESSAGE)
+		{
+			// Calculate actual number of columns based on packets
+			size_t cols_in_message = message_packets.size() * COLS_PER_PACKET;
+
+			// Create temporary sensor info with modified format
+			auto temp_info = info_;  // Copy the sensor info
+			temp_info.format.columns_per_frame = cols_in_message;  // Set to actual columns we have
+
+			// Create temporary scan object sized for just these packets
+			ouster::LidarScan temp_scan(cols_in_message, H, info_.format.udp_profile_lidar);
+			ouster::ScanBatcher temp_batcher(temp_info);
+
+			for (const auto& p : message_packets)
+			{
+				temp_batcher(p, temp_scan);
+			}
+
+			auto msg = CreateOusterMessage(temp_scan, message_packets);
+			if (msg != nullptr)
+			{
+				for (auto& callback : callbacks_)
+				{
+					callback->execute(*msg);
+				}
+			}
+
+			message_packets.clear();
+		}
 
 		if (frame_counter_ == N_FRAMES)
 		{
-			stop(); // Use the new stop() method
+			stop();
 		}
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << "Error processing packet: " << e.what() << std::endl;
-		stop(); // Stop on error
+		stop();
 	}
 }

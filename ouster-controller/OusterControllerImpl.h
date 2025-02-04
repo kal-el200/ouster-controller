@@ -216,12 +216,15 @@ public:
             std::vector<std::unique_ptr<SensorProxy>> sensor_proxies;
 
             auto notify_client_frequency = configuration.get<int>("client.notify_client_frequency");
-
+            auto beam_altitude_angle_type = configuration.get<uint8_t>("client.beam_altitude_angle_type");
+            
             for (const auto& info : infos)
             {
                 std::cout << "Creating sensor proxy " << info.sn << std::endl;
                 sensor_proxies.emplace_back(
-                    std::make_unique<SensorProxy>(info, viz, ousterMsgCallbacks_, notify_client_frequency, N_FRAMES));
+                    std::make_unique<SensorProxy>(
+                        info, viz, ousterMsgCallbacks_, 
+                        notify_client_frequency, beam_altitude_angle_type, N_FRAMES));
             }
 
             std::thread capture_thread([&]() {

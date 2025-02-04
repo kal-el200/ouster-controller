@@ -1,9 +1,10 @@
 {
-  "client": {
-    "log_level": "debug",
+	"client": {
+		"log_level": "debug",
 		"output_file_base": "cloud_",
-		"notify_client_frequency": 4 // number of notifications a second made from ouster-controller to client
-  },
+		"notify_client_frequency": 40, // number of notifications a second made from ouster-controller to client
+		"beam_altitude_angle_type": 0 // 0 - uniform, 1 - gradient, 2 - above horizon, 3 -below horizon
+	},
 	"sensor": {
 		"hostname": "127.0.0.1",
 		"udp_dest": "127.0.0.1",
