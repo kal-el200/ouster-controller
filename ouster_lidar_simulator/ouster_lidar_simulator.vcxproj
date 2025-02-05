@@ -271,7 +271,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Projects\ouster-sdk\vcpkg\installed\x64-windows\include;C:\Projects\ouster-sdk\ouster_client\include\optional-lite;C:\Projects\ouster-sdk\ouster_viz\include;C:\Projects\ouster-sdk\ouster_client\include;C:\Projects\ouster-sdk-keep\ouster_pcap\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(Projects)\ouster-sdk\vcpkg\installed\x64-windows\include;$(Projects)\ouster-sdk\ouster_client\include\optional-lite;$(Projects)\ouster-sdk\ouster_viz\include;$(Projects)\ouster-sdk\ouster_client\include;$(Projects)\ouster-sdk-keep\ouster_pcap\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Projects/ouster-sdk/ouster_client/include/optional-lite" /external:I "C:/Projects/vcpkg/installed/x64-windows/include/eigen3" /external:I "C:/Projects/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

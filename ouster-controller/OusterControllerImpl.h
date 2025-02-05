@@ -36,9 +36,8 @@ private:
     std::unique_ptr<DDSCommunicator> dds_communicator_;
     std::vector<ouster::sensor::Sensor> sensors_;
 
-    std::vector<ouster::sensor::Sensor> get_sdk_sensors(OusterConfiguration& configuration)
+    void get_sdk_sensors(OusterConfiguration& configuration)
     {
-        std::vector<ouster::sensor::Sensor> sensors;
         const std::string sensor_hostname = configuration.get<std::string>("sensor.hostname");
         std::cerr << "Connecting to \"" << sensor_hostname << "\"...\n";
 
@@ -54,8 +53,7 @@ private:
         ouster::sensor::Sensor sensor(sensor_hostname, config);
         std::cerr << "Sensor connection created\n";
 
-        sensors.push_back(sensor);
-        return sensors;
+        sensors_.push_back(sensor);
     }
 
     void read_sensor_config(ouster::sensor::sensor_config& config, OusterConfiguration& configuration)
@@ -194,7 +192,7 @@ public:
             ouster::sensor::init_logger(configuration.get<std::string>("client.log_level"));
 
             std::cout << "Getting SDK sensors..." << std::endl;
-            sensors_ = get_sdk_sensors(configuration);
+            get_sdk_sensors(configuration);
             std::cout << "Sensors array size: " << sensors_.size() << std::endl;
             
             if (sensors_.empty())
