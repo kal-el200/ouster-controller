@@ -35,6 +35,7 @@ private:
     std::vector<std::unique_ptr<DataCallbackBase<OusterMsg>>> ousterMsgCallbacks_;
     std::unique_ptr<DDSCommunicator> dds_communicator_;
     std::vector<ouster::sensor::Sensor> sensors_;
+    std::unique_ptr<dds::pub::DataWriter<Ouster::OusterMsg>> ouster_msg_dds_writer_;
 
     void get_sdk_sensors(OusterConfiguration& configuration)
     {
@@ -116,14 +117,15 @@ private:
         viz.run();
     }
 
-    void create_dds_writers() const
+    void create_dds_writers()
     {
         try
         {
             // Create writer with explicit type parameter for Ouster Message
-            auto writer = dds_communicator_->CreateWriter<Ouster::OusterMsg>("VehicleQosLib::OusterMsg");
+            ouster_msg_dds_writer_ = std::make_unique<dds::pub::DataWriter<Ouster::OusterMsg>>
+                (dds_communicator_->CreateWriter<Ouster::OusterMsg>("VehicleQosLib::OusterMsg"));
 
-            if (writer == dds::core::null)
+            if (ouster_msg_dds_writer_ == dds::core::null)
             {
                 std::cerr << "Failed to create DDS writer for OusterMsg" << std::endl;
                 return;
@@ -137,14 +139,11 @@ private:
         }
     }
 
-    void publish_ouster_msg(const Ouster::OusterMsg& msg) const
+    void publish_ouster_msg(const OusterMsg& msg) const
     {
         try
         {
-            if (!dds_communicator_->Write("Ouster::OusterMsg", msg))
-            {
-                std::cerr << "Failed to publish OusterMsg" << std::endl;
-            }
+            ouster_msg_dds_writer_->write(msg);
         }
         catch (const std::exception& e)
         {
@@ -165,6 +164,9 @@ public:
         };
 
         dds_communicator_->Init(prms);
+        std::function<void(const OusterMsg&)> callback = [this](const OusterMsg& msg) { this->publish_ouster_msg(msg); }; // Create std::function explicitly
+        ousterMsgCallbacks_.push_back(makeOusterMsgCallback(callback));
+
         create_dds_writers();
     }
 

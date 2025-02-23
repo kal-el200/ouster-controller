@@ -202,6 +202,10 @@ std::unique_ptr<OusterMsg> SensorProxy::CreateOusterMessage(
 	const auto& reflectivity_field = scan.field<uint8_t>(ouster::sensor::ChanField::REFLECTIVITY);
 	const auto& signal_field = scan.field<uint16_t>(ouster::sensor::ChanField::SIGNAL);
 	const auto& near_ir_field = scan.field<uint16_t>(ouster::sensor::ChanField::NEAR_IR);
+	
+    const auto& range_field2 = is_dual_returns ? scan.field<uint32_t>(ouster::sensor::ChanField::RANGE2) : ouster::Field();
+	const auto& reflectivity_field2 = is_dual_returns ? scan.field<uint8_t>(ouster::sensor::ChanField::REFLECTIVITY2) : ouster::Field();
+	//const auto& signal_field2 = is_dual_returns ? &scan.field<uint16_t>(ouster::sensor::ChanField::SIGNAL2) : ouster::Field();
 
 	for (size_t i = 0; i < num_firings; i++)
 	{
@@ -232,14 +236,30 @@ std::unique_ptr<OusterMsg> SensorProxy::CreateOusterMessage(
 			std::chrono::system_clock::now().time_since_epoch()).count());
 
 		auto& ray_data = firing.ouster_ray_data();
+		auto& distance_second = firing.distance_second();
+		auto& reflectivity_second = firing.reflectivity_second();
+
 		ray_data.resize(scan.h);
+
+		if (is_dual_returns)
+		{
+			distance_second.resize(scan.h);
+			reflectivity_second.resize(scan.h);
+		}
 
 		for (size_t j = 0; j < scan.h; j++)
 		{
 			auto& ray = ray_data[j];
+
 			ray.distance_first(range_field(j, i));
 			ray.reflectivity_first(reflectivity_field(j, i));
 			ray.nir_value(near_ir_field(j, i));
+
+			if (is_dual_returns)
+			{
+				distance_second[j] = range_field2(j, i);
+				reflectivity_second[j] = reflectivity_field2(j, i);
+			}
 		}
 	}
 

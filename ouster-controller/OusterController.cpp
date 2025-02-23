@@ -2,7 +2,7 @@
 #include "pch.h"
 #include "OusterController.h"
 #include "ddsCommunicator.h"
-#include "SensorProxy.h".
+#include "SensorProxy.h"
 #include "ouster_dds_model.hpp"
 #include "ouster_dds_modelPlugin.hpp"
 #include "OusterControllerImpl.h"
