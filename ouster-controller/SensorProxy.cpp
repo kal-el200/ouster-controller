@@ -232,8 +232,7 @@ std::unique_ptr<OusterMsg> SensorProxy::CreateOusterMessage(
 		uint16_t azimuth = (measurement_id * 36000) / W;
 		firing.rotational_direction_azimuth(azimuth);
 
-		firing.azimuth_firing_time(std::chrono::duration_cast<std::chrono::nanoseconds>(
-			std::chrono::system_clock::now().time_since_epoch()).count());
+		firing.azimuth_firing_time(scan_.timestamp()[i]);
 
 		auto& ray_data = firing.ouster_ray_data();
 		auto& distance_second = firing.distance_second();
